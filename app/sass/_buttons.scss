@@ -1,0 +1,105 @@
+
+// Buttons
+
+
+li {
+  list-style: none
+}
+
+.music_buttons {
+  width: 250px;
+  height: 25px;
+  margin: 3px;
+  font-size: 16px;
+  border: 1px solid whitesmoke;
+  border-radius: 5px;
+}
+
+.music_buttons:hover {
+  background: lightslategrey;
+}
+
+
+
+button {
+  cursor: pointer;
+  color: white;
+  border: 1px solid black;
+  border-radius: 20px
+}
+
+button.timer {
+  height: 70px;
+  margin: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  float: right;
+
+}
+
+.timer_buttons {
+  width: 50%;
+  clear: left;
+}
+
+button.plus {
+  border: 1px solid grey;
+  border-radius: 50%;
+  background: darkred;
+  margin: 0 10px;
+  width: 100px;
+  height: 100px;
+  top: 50px;
+  opacity: 0.5;
+
+
+}
+
+button.plus:hover {
+  opacity: 1;
+}
+
+
+button.minus {
+  border: 1px solid grey;
+  border-radius: 50%;
+  background: darkblue;
+  margin: 0 10px;
+  width: 100px;
+  height: 100px;
+  top: 50px;
+  opacity: 0.5;
+
+
+}
+
+button.minus:hover {
+  opacity: 1;
+}
+
+button.start {
+  border-radius: 50%;
+  border: 4px solid lightgrey;
+  background-color: Transparent;
+  width: 150px;
+  height: 150px;
+  margin: 15px auto;
+
+}
+
+button.start:hover {
+  background: lightslategrey;
+}
+
+
+button.reset {
+  font-size: 16px;
+  width: 200px;
+  height: auto;
+  background: transparent;
+  border: 2px solid lightgrey;
+}
+
+button.reset:hover {
+  background: lightslategrey;
+}

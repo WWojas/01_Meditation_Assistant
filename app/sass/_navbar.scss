@@ -1,0 +1,263 @@
+
+// NAVBAR
+
+
+//  SignUp box
+
+
+
+
+.SignUp {
+  background: darkslategrey;
+  border: 2px solid grey;
+  border-radius: 10px;
+  width: 800px;
+  display: flex;
+  position: absolute;
+  top: 50px;
+  left: 150px;
+  text-align: center;
+  padding: 20px;
+  height: 400px;
+  align-items: center;
+  h2 {
+    margin-bottom: 10px;
+  }
+  span {
+    font-size: 16px;
+  }
+
+}
+
+
+
+.SignUp input {
+  width: 100%;
+  height: 50px;
+  padding: 20px;
+  font-size: 30px;
+  margin-top: 10px;
+}
+
+.SignUp button {
+  margin-top: 20px;
+  width: 100%;
+  height: 70px;
+  font-size: 20px;
+  border-radius: 5px;
+}
+
+
+
+
+// LogIn box
+
+.LogIn {
+  background: darkslategrey;
+  border: 2px solid grey;
+  border-radius: 10px;
+  width: 800px;
+  display: flex;
+  position: absolute;
+  top: 50px;
+  left: 150px;
+  text-align: center;
+  padding: 20px;
+  height: 300px;
+  align-items: center;
+  h2 {
+    margin-bottom: 10px;
+  }
+  span {
+    font-size: 16px;
+  }
+
+}
+
+.LogIn input {
+  width: 100%;
+  height: 50px;
+  padding: 20px;
+  font-size: 30px;
+}
+
+.LogIn button {
+  margin-top: 20px;
+  width: 100%;
+  height: 70px;
+  font-size: 20px;
+  border-radius: 5px;
+}
+
+
+// My Account
+
+.myAccount {
+  width: 200px;
+  height: 250px;
+  position: absolute;
+  top: 40px;
+  right: 150px;
+  text-align: center;
+  background: darkslategrey;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.myAccount button {
+  width: 180px;
+  margin: 5px;
+  height: 30px;
+  background: lightslategrey;
+  border-radius: 2px;
+}
+
+
+
+// userStatsBox
+
+.userStatsBox {
+  color: black;
+  position: fixed;
+  right: calc(50% - 600px);
+  margin: 0 auto;
+  top: 41px;
+  width: 1200px;
+  height: 450px;}
+p {
+  margin: 10px;
+
+}
+
+
+
+.stats_table {
+  border-top: 3px solid grey;
+  font-size: 20px;
+  color: whitesmoke;
+  padding: 10px;
+  margin: 0 auto;
+  line-height: 30px;
+  width: 80%;
+  background: whitesmoke;
+}
+
+
+.stats_table tr {
+  color: black;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+}
+
+.stats_table {
+  color: black;
+  padding: 20px;
+
+}
+
+
+
+// MOBILE
+
+@media (max-width:768px) {
+
+
+  .LogIn {
+    background: darkslategrey;
+    border: 2px solid grey;
+    border-radius: 10px;
+    width: 350px;
+    font-size: 12px;
+    display: flex;
+    position: absolute;
+    top: 100px;
+    left: calc( 50% - 175px);
+    text-align: center;
+    padding: 0 10px;
+    height: 250px;
+    align-items: center;
+    z-index: 5;
+
+
+
+  }
+
+  .LogIn input {
+
+      width: 100%;
+      height: 10px;
+      padding: 20px;
+      font-size: 12px;
+
+
+  }
+
+
+
+
+
+  .LogIn button {
+    margin-top: 5px;
+    width: 100%;
+    height: 50px;
+    font-size: 12px;
+    border-radius: 5px;
+  }
+
+  .LogIn span {
+    margin-top: 5px;
+    width: 100%;
+    height: 50px;
+    font-size: 12px;
+    border-radius: 5px;
+  }
+
+
+
+  .SignUp {
+    background: darkslategrey;
+    border: 2px solid grey;
+    border-radius: 10px;
+    width: 350px;
+    font-size: 12px;
+    display: flex;
+    position: absolute;
+    top: 100px;
+    left: calc( 50% - 175px);
+    text-align: center;
+    padding: 20px;
+    height: 300px;
+    align-items: center;
+
+  }
+
+  .SignUp  input {
+    width: 100%;
+    height: 10px;
+    padding: 20px;
+    font-size: 20px;
+  }
+
+  .SignUp h2 {
+    font-size: 20px;
+  }
+
+
+
+  .SignUp button {
+    margin-top: 20px;
+    width: 100%;
+    height: 50px;
+    font-size: 12px;
+    border-radius: 5px;
+  }
+
+  .SignUp span {
+    margin-top: 20px;
+    width: 100%;
+    height: 50px;
+    font-size: 12px;
+    border-radius: 5px;
+  }
+
+}
