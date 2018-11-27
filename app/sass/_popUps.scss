@@ -20,16 +20,19 @@
 
 // userSignUpFormError
 
-.showSignupError {
-   width: 300px;
-  height: auto;
-  background: grey;
+.showUsernameSignUpError, .showPasswordSignUpError, .showEmailSignUpError {
+  width: 400px;
+  height: 150px;
+  font-size: 18px;
+  padding: 15px;
+  background: lightslategrey;
+  border: 1px solid lightgrey;
   border-radius: 5px;
   z-index: 2;
   text-align: center;
   position: absolute;
-  left: calc(50% - 150px);
-  margin-top: 10px;
+  left: calc(50% - 200px);
+  top: calc( 50% - 75px);
 }
 
 
