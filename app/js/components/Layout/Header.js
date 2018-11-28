@@ -5,36 +5,47 @@ class Header extends React.Component {
         super(props);
         this.state = {
 
-            // DESKTOP
-            signUpWindowVisible: false,
+            //showing/hiding menus
+            toggleDisplayLogIn: 'none',
+            toggleDisplaySignUp: 'none',
+            isUserLoggedIn: false,
+            showMyAccount: 'none',
+            displayMobileMenu: 'none',
+
+            displaySignUpNav: 'block',
+
+
+            // default input values
             password: '',
             username: '',
             email: '',
-
-            loginWindowVisible: false,
 
             // ERROR boxes //
             showUsernameSignUpError: 'none',
             showPasswordSignUpError: 'none',
             showEmailSignUpError: 'none',
+            showLoginErrorBox: 'none',
 
+            // showing user pannel
             showLoginPanel: 'block',
             showAccountOptions: 'none',
-
-            response: '',
-
             userStatsDisplay: 'none',
             userStatsInfo: [],
 
+            // Props for passing from Header to Body
+            response: '',
+            // Callback
+
+            checkUserLogin: '',
+
+
+
+
+            // empty array for storing fetched user data
             sessions: [],
 
-            toggleDisplayLogIn: 'none',
-            toggleDisplaySignUp: 'none',
-            isUserLoggedIn: false,
-            showMyAccount: 'none',
 
-            //    MOBILE
-            displayMobileMenu: 'none'
+
 
 
         }
@@ -48,19 +59,16 @@ class Header extends React.Component {
 
     // SIGN UP
     signUp = () => {
-        if (this.state.signUpWindowVisible === false) {
+        if (this.state.toggleDisplaySignUp === 'none') {
             this.setState({
-                signUpWindowVisible: true,
-                loginWindowVisible: false,
                 toggleDisplaySignUp: 'block',
+                toggleDisplayLogIn: 'none',
                 displayMobileMenu: 'none'
 
 
             })
         } else {
             this.setState({
-                signUpWindowVisible: false,
-                loginWindowVisible: false,
                 password: '',
                 username: '',
                 email: '',
@@ -134,7 +142,7 @@ class Header extends React.Component {
             }).then(() => {
 
                 this.setState({
-                    signUpWindowVisible: false
+                    toggleDisplaySignUp: 'none'
                 })
             })}
 
@@ -144,19 +152,16 @@ class Header extends React.Component {
 
     // LOG IN Box
     logIn = () => {
-        if (this.state.loginWindowVisible === false) {
+        if (this.state.toggleDisplayLogIn === 'none') {
             this.setState({
-                loginWindowVisible: true,
-                signUpWindowVisible: false,
                 toggleDisplayLogIn: 'block',
+                toggleDisplaySignUp: 'none',
                 showMyAccount: 'none',
                 displayMobileMenu: 'none'
 
             })
         } else {
             this.setState({
-                loginWindowVisible: false,
-                signUpWindowVisible: false,
                 password: '',
                 username: '',
                 email: '',
@@ -194,19 +199,32 @@ class Header extends React.Component {
 
                 this.setState({
                     showLoginPanel: 'none',
-                    loginWindowVisible: false,
                     response: response,
                     toggleDisplayLogIn: 'none',
+                    toggleDisplaySignUp: 'none',
+
+                    displaySignUpNav: 'none',
+
                     showMyAccount: 'block',
                     isUserLoggedIn: true,
 
-                })
+                });
 
-
+                // Callback from Homepage
+                this.props.checkUserLogin(this.state.isUserLoggedIn)
             }
 
-        })
+        }).catch(() => {
+            this.setState ({
+                showLoginErrorBox: 'block'
+            })
+        });
+
+
+
     };
+
+
 
 
     // SHOW My Account Box
@@ -216,7 +234,8 @@ class Header extends React.Component {
         if (this.state.showAccountOptions === 'none') {
 
             this.setState({
-                showAccountOptions: 'block'
+                showAccountOptions: 'block',
+
             })
         } else if (this.state.showAccountOptions === 'block') {
 
@@ -231,7 +250,15 @@ class Header extends React.Component {
 
     userLogOut = () => {
         this.setState({
-            showLoginPanel: 'block'
+            isUserLoggedIn: false,
+            showLoginPanel: 'block',
+            showMyAccount: 'none',
+            displaySignUpNav: 'block',
+            email: '',
+            password: '',
+            username: ''
+
+
         })
     };
 
@@ -268,17 +295,7 @@ class Header extends React.Component {
     };
 
 
-    // HIDE STATISTICS on scroll
-    componentDidMount() {
-        window.addEventListener('scroll', () => {
-            this.setState({
-                userStatsDisplay: 'none',
-                showAccountOptions: 'none'
 
-            })
-        });
-
-    }
 
                                                 // ------------ //
                                                    // DESKTOP //
@@ -313,7 +330,7 @@ class Header extends React.Component {
     }
 
 
-    // MyAccount Desktop
+    // Desktop MyAccount
 
     generateMyAccountDesktop () {
         if (this.state.isUserLoggedIn === true) {
@@ -324,17 +341,21 @@ class Header extends React.Component {
 
                     <div className="myAccount" style={{ display: this.state.showAccountOptions }} >
 
-                        <p> Welcome, {this.state.response[0].username} </p>
-                        <button onClick={this.showStatistics}> My Profile </button>
+                        <h1> Welcome, {this.state.response[0].username} </h1>
+
+                        <div className="myAccountButtons">
+                        <button onClick={this.showStatistics}> My Statistics </button>
 
 
-                        <div class="userStatsBox" style={{ display: this.state.userStatsDisplay }} >
+                        <div className="userStatsBox" style={{ display: this.state.userStatsDisplay }} id="scrollbarStyle" >
 
-                            <table class="stats_table">
+                            <div className="closeSummary" onClick={this.closeSummary}><img src='/app/images/close_box.png' /> </div>
+
+                            <table className="stats_table">
                                 <thead>
                                 <tr>
-                                    <h1> {this.state.response[0].username} </h1>
-                                    <h1> Session Summary </h1>
+                                    <h2> {this.state.response[0].username} </h2>
+                                    <h2> Session Summary </h2>
                                     <p><em> "The secret of getting ahead is getting started" -
                                         <strong>Mark Twain</strong></em></p>
 
@@ -364,12 +385,21 @@ class Header extends React.Component {
                         <button> My Groups </button>
                         <button> Publish </button>
                         <button onClick={this.userLogOut}> Log Out </button>
-
+                        </div>
                     </div>
                 </li>
 
             )
         }
+    }
+
+    // Close Summary Box
+
+    closeSummary = () => {
+        this.setState ({
+            userStatsDisplay: 'none',
+            showAccountOptions: 'none'
+        })
     }
 
     // Desktop LogIn Box
@@ -389,6 +419,9 @@ class Header extends React.Component {
                     <input onChange={this.typePassword} type='password'
                            value={this.state.password}/> Password
                     <button onClick={this.checkUser} type='submit'> LOG IN </button>
+
+                    { this.generateLoginErrorBox () }
+
                 </form>
 
             </div>
@@ -397,12 +430,37 @@ class Header extends React.Component {
         )
     }
 
+    // Desktop LogIn Error Box
+
+    generateLoginErrorBox() {
+        return (
+            <div className="showUserLoginError" style={{display: this.state.showLoginErrorBox}} onMouseMove={this.closeErrorBox}>
+                <h2> We're sorry but ... </h2>
+                <p> your <strong> email or password </strong> seem to be incorrect. </p>
+            </div>
+
+        )
+    }
+
+
+    // Hiding Error SignUp and LogIn Boxes on MouseMove
+    closeErrorBox = () => {
+        this.setState ({
+            showLoginErrorBox: 'none',
+            showUsernameSignUpError: 'none',
+            showEmailSignUpError: 'none',
+            showPasswordSignUpError: 'none'
+        })
+    };
+
+
+
 
    // Desktop SignUp
 
     generateDesktopSignUp () {
         return (
-            <li>
+            <li style ={{ display: this.state.displaySignUpNav }}>
                 <span onClick = {this.signUp}> Sign up </span>
 
                 <div className="SignUp" style ={{ display: this.state.toggleDisplaySignUp }}>
@@ -429,11 +487,11 @@ class Header extends React.Component {
     }
 
 
-    // Desktop Username Error Box
+    // Desktop SignUp Error Boxex
 
     generateUsernameError () {
         return (
-            <div className="showUsernameSignUpError" style={{display: this.state.showUsernameSignUpError}}>
+            <div className="showUsernameSignUpError" style={{display: this.state.showUsernameSignUpError}} onMouseMove={this.closeErrorBox}>
                 <h2> We're sorry but ... </h2>
                 <p> your <strong> name </strong> must consist of at least 8 characters </p>
             </div>
@@ -442,7 +500,7 @@ class Header extends React.Component {
 
     generateEmailError () {
         return (
-            <div className="showEmailSignUpError" style={{display: this.state.showEmailSignUpError}}>
+            <div className="showEmailSignUpError" style={{display: this.state.showEmailSignUpError}} onMouseMove={this.closeErrorBox}>
                 <h2> We're sorry but ... </h2>
                 <p> your <strong> email </strong> must consist of at least 6 characters and contain <strong> @ </strong> </p>
             </div>
@@ -452,7 +510,7 @@ class Header extends React.Component {
 
     generatePasswordError () {
         return (
-            <div className="showPasswordSignUpError" style={{display: this.state.showPasswordSignUpError}}>
+            <div className="showPasswordSignUpError" style={{display: this.state.showPasswordSignUpError}} onMouseMove={this.closeErrorBox}>
                 <h2> We're sorry but ... </h2>
                 <p> your <strong> password </strong> must consist of at least 6 characters </p>
             </div>
@@ -503,7 +561,6 @@ class Header extends React.Component {
                             <span onClick={this.logIn}> Login </span>
                         </li>
 
-
                         {this.generateMobileMyAccount()}
 
                         <li> About</li>
@@ -534,8 +591,6 @@ class Header extends React.Component {
         } else if (this.state.displayMobileMenu === 'block') {
             this.setState({
                 displayMobileMenu: 'none',
-                loginWindowVisible: false,
-                signUpWindowVisible: false,
                 toggleDisplayLogIn: 'none',
                 toggleDisplaySignUp: 'none',
             })
@@ -601,7 +656,9 @@ class Header extends React.Component {
                 <div className="myAccount" style={{display: this.state.showAccountOptions}}>
 
                     <p> Welcome, {this.state.response[0].username} </p>
-                    <button onClick={this.showStatistics}> My Profile</button>
+
+                    <div className="myAccountButtons">
+                    <button onClick={this.showStatistics}> My Statistics</button>
 
 
                     <div className="userStatsBox" style={{display: this.state.userStatsDisplay}}>
@@ -610,7 +667,7 @@ class Header extends React.Component {
                             <thead>
                             <tr>
                                 <h1> {this.state.response[0].username} </h1>
-                                <h1> Session Summary </h1>
+                                <h2> Session Summary </h2>
                                 <p><em> "The secret of getting ahead is getting started" -
                                     <strong>Mark Twain</strong></em></p>
 
@@ -640,11 +697,12 @@ class Header extends React.Component {
                     <button> My Groups</button>
                     <button> Publish</button>
                     <button onClick={this.userLogOut}> Log Out</button>
-
+                    </div>
                 </div>
             </li>
 
         }
+
     }
 
 
@@ -652,8 +710,11 @@ class Header extends React.Component {
 
 // Rendering all elements
     render() {
+
+
+
         return (
-            <div className="container">
+             <div className="container">
                 <header>
 
 

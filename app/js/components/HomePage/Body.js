@@ -479,14 +479,27 @@ return (
                 <button onClick={this.doNotLog}><h3> Don't log </h3></button>
             </div>
 
-        <div className="showUserNotLoggedIn" style={{display: this.state.showUserNotLoggedIn}}>
-            <h2> Hang on a minute!</h2>
-                <p><em> You cannot save your session until you <a href="#LogIn" >Log In </a> </em></p>
+         { this.showUserNotLoggedInError () }
 
-        </div>
      </div>
 
     }
+
+    showUserNotLoggedInError () {
+        return (
+            <div className="showUserNotLoggedIn" style={{display: this.state.showUserNotLoggedIn}} onMouseLeave={this.HideUserNotLoggedInError}>
+                <h2> Hang on a minute!</h2>
+                <p><em> You cannot save your session until you <a href="#LogIn" >Log In </a> </em></p>
+
+            </div>
+        )
+    }
+
+    HideUserNotLoggedInError = () => {
+        this.setState ({
+            showUserNotLoggedIn: 'none'
+        })
+    };
 
 
     // Don't log session
@@ -503,14 +516,14 @@ return (
     // LOG RESULTS function
     logResult = () => {
 
-        if (0 ===1) {
+        if ( this.props.loggedIn === true) {    // logged in inherits state value from Header.js
             fetch('http://localhost:3000/statistics', {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json; charset=utf-8",
                 },
                 body: JSON.stringify({
-                    'date': moment().format('MMMM Do YYYY, h:mm:ss'),
+                    'date': moment().format('LLLL'),
 
                     'duration': this.state.current_time,
 

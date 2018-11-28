@@ -93,23 +93,55 @@
 // My Account
 
 .myAccount {
-  width: 200px;
-  height: 250px;
-  position: absolute;
-  top: 40px;
-  right: 150px;
-  text-align: center;
   background: darkslategrey;
-  border: 1px solid grey;
-  border-radius: 5px;
+  border: 4px solid whitesmoke;
+  border-radius: 10px;
+  width: 340px;
+  display: flex;
+  position: absolute;
+  top: 50px;
+  right: 135px;
+  text-align: center;
+  padding: 20px;
+  height: 260px;
 }
 
+ //.myAccount:before {
+ //  content: '';
+ //  display: block;
+ //  width: 30px;
+ //  height: 30px;
+ //  position: relative;
+ //  background: red;
+ //  top: -30px;
+ //  right: -40px;
+ //  transform: rotate(45deg);
+ //  margin-top: 5px;
+ //}
+
 .myAccount button {
-  width: 180px;
+  width: 280px;
   margin: 5px;
-  height: 30px;
+  font-size: 16px;
+  height: 25px;
   background: lightslategrey;
-  border-radius: 2px;
+  color: whitesmoke;
+  border-radius: 5px;
+  border: 1px solid whitesmoke;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.myAccount h1 {
+  color: whitesmoke;
+  margin: 0 0 30px 0;
+}
+
+.myAccount h2 {
+  color: black;
+  font-size: 36px;
+  padding: 0 0 5px 0;
+
 }
 
 
@@ -118,12 +150,13 @@
 
 .userStatsBox {
   color: black;
-  position: fixed;
-  right: calc(50% - 600px);
+  position: absolute;
   margin: 0 auto;
-  top: 41px;
-  width: 1200px;
-  height: 450px;}
+  top: -14px;
+  width: 1000px;
+  height: 449px;
+  right: -44px;
+  overflow-y: scroll;}
 p {
   margin: 10px;
 
@@ -140,6 +173,7 @@ p {
   line-height: 30px;
   width: 80%;
   background: whitesmoke;
+  overflow-y: scroll;
 }
 
 
@@ -155,7 +189,46 @@ p {
 
 }
 
+.stats_table tbody {
+  overflow-y: scroll
+}
 
+
+#scrollbarStyle::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.6);
+  background-color: #CCCCCC;
+}
+
+#scrollbarStyle::-webkit-scrollbar
+{
+  width: 10px;
+  background-color: #F5F5F5;
+}
+
+#scrollbarStyle::-webkit-scrollbar-thumb
+{
+  background-color: #FFF;
+  background-image: -webkit-linear-gradient(90deg,
+          rgba(0, 0, 0, 1) 0%,
+          rgba(0, 0, 0, 1) 25%,
+          transparent 100%,
+          rgba(0, 0, 0, 1) 75%,
+          transparent)
+}
+
+
+.closeSummary {
+  position: relative
+}
+
+.closeSummary img {
+  position: relative;
+  right: 20px;
+  top: 25px;
+  width: 35px;
+  height: 35px;
+}
 
 // MOBILE
 
@@ -187,9 +260,14 @@ p {
       width: 100%;
       height: 10px;
       padding: 20px;
-      font-size: 12px;
+      font-size: 18px;
 
 
+  }
+
+  .LogIn h2 {
+    margin-bottom: 10px;
+    margin-top: 20px;
   }
 
 
@@ -226,7 +304,7 @@ p {
     left: calc( 50% - 175px);
     text-align: center;
     padding: 20px;
-    height: 300px;
+    height: 370px;
     align-items: center;
 
   }
@@ -256,8 +334,57 @@ p {
     margin-top: 20px;
     width: 100%;
     height: 50px;
-    font-size: 12px;
+    font-size: 16px;
     border-radius: 5px;
   }
+
+
+  .myAccount {
+    background: darkslategrey;
+    border: 4px solid whitesmoke;
+    border-radius: 10px;
+    width: 205px;
+    right: 0;
+    display: flex;
+    position: absolute;
+    top: -10px;
+    text-align: center;
+    padding: 20px;
+    height: 260px;
+  }
+
+
+  .myAccount button {
+    width: 170px;
+  }
+
+  .myAccountButtons {
+    display: grid;
+    justify-content: center;
+  }
+
+  .userStatsBox {
+    color: black;
+    position: absolute;
+    margin: 0;
+    top: -8px;
+    width: 450px;
+    height: 454px;
+    right: -3px;
+    overflow-y: scroll;gi
+  }
+
+  .closeSummary {
+    position: relative
+  }
+
+  .closeSummary img {
+    position: relative;
+    right: 20px;
+    top: 25px;
+    width: 35px;
+    height: 35px;
+  }
+
 
 }

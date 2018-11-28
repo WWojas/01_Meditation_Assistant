@@ -74,10 +74,11 @@ header {
 
   .header_mobile {
     width: 100%;
-    display: block;
-    background: lightslategrey;
+    display: flex;
+    background: #363636;
     height: auto;
     color: whitesmoke;
+    padding: 5px;
   }
 
   .bar {
@@ -89,11 +90,10 @@ header {
 
   .mobile_bar {
 
-     display: flex;
-    justify-content: flex-start;
+    margin: 0 64px 0 0;
    > img {
-     width:30px;
-     height:30px;
+     width:40px;
+     height:40px;
    }
   }
 
@@ -105,22 +105,37 @@ header {
   }
 
   .mobile_burger {
-    display: block;
     position: absolute;
     top: 64px;
+    right: 10px;
     background: darkslategray;
-    width: 200px;
-    height: 180px;
-    padding: 0;
+    width: 150px;
+    height: 250px;
+    padding: 15px;
     border-radius: 10px;
     color: whitesmoke;
-    text-align: center;
+    text-align: left;
 
     > li {
       padding: 5px;
     }
 
+
   }
+
+  //.mobile_burger:before {
+  //  content: '';
+  //  display: block;
+  //  width: 30px;
+  //  height: 30px;
+  //  position: relative;
+  //  background: darkslategray;
+  //  top: -30px;
+  //  right: -40px;
+  //  transform: rotate(45deg);
+  //  margin-top: 5px;
+  //}
+
 
 
 }
