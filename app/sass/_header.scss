@@ -10,22 +10,21 @@ header {
 
 .header_top {
   height: 40px;
+
+  ul {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  li {
+    cursor: pointer;
+    width: auto;
+    display: inline-block;
+    padding: 10px;
+  }
+
 }
-
-.header_top ul {
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-
-}
-
-.header_top li {
-  cursor: pointer;
-  width: auto;
-  display: inline-block;
-  padding: 10px;
-}
-
 
 
 
@@ -46,17 +45,19 @@ header {
   align-self:center;
   text-align: center;
   color: black;
+
+  p {
+    margin-top: 20px;
+  }
+
+  img {
+    width: 50px;
+    height: 50px;
+  }
+
 }
 
-.header_picture_text p {
-  margin-top: 20px;
 
-}
-
-.header_picture_text img {
-  width: 50px;
-  height: 50px;
-}
 
 .header_mobile {
       display: none
@@ -77,7 +78,7 @@ header {
     display: flex;
     background: #363636;
     height: auto;
-    color: whitesmoke;
+    color: map-get($colors, white);
     padding: 5px;
   }
 
@@ -105,15 +106,17 @@ header {
   }
 
   .mobile_burger {
+    font-size: 20px;
     position: absolute;
     top: 64px;
     right: 10px;
-    background: darkslategray;
+    background: map-get($colors, darkGreen);
     width: 150px;
-    height: 250px;
-    padding: 15px;
+    height: 275px;
+    padding-top: 20px;
+    padding-left: 10px;
     border-radius: 10px;
-    color: whitesmoke;
+    color: map-get($colors, white);
     text-align: left;
 
     > li {

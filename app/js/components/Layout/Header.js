@@ -341,9 +341,10 @@ class Header extends React.Component {
 
                     <div className="myAccount" style={{ display: this.state.showAccountOptions }} >
 
-                        <h1> Welcome, {this.state.response[0].username} </h1>
 
                         <div className="myAccountButtons">
+
+                            <h1> Welcome, {this.state.response[0].username} </h1>
                         <button onClick={this.showStatistics}> My Statistics </button>
 
 
@@ -386,6 +387,7 @@ class Header extends React.Component {
                         <button> Publish </button>
                         <button onClick={this.userLogOut}> Log Out </button>
                         </div>
+
                     </div>
                 </li>
 
@@ -398,7 +400,8 @@ class Header extends React.Component {
     closeSummary = () => {
         this.setState ({
             userStatsDisplay: 'none',
-            showAccountOptions: 'none'
+            showAccountOptions: 'none',
+            displayMobileMenu: 'none'
         })
     }
 
@@ -658,11 +661,13 @@ class Header extends React.Component {
                     <p> Welcome, {this.state.response[0].username} </p>
 
                     <div className="myAccountButtons">
+
                     <button onClick={this.showStatistics}> My Statistics</button>
 
 
                     <div className="userStatsBox" style={{display: this.state.userStatsDisplay}}>
 
+                        <div className="closeSummary" onClick={this.closeSummary}><img src='/app/images/close_box.png' /> </div>
                         <table className="stats_table">
                             <thead>
                             <tr>

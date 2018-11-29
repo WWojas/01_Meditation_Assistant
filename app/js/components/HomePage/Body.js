@@ -309,7 +309,8 @@ return (
     // STOP & RESET TIMER FUNCTIONS
     resetCountDown = () => {
         clearInterval(this.timer);
-        this.muteSound();
+        this.heart.pause();
+        this.heart.currentTime = 0;
 
         this.setState({
             current_time: 15,

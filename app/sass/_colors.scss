@@ -2,7 +2,13 @@
 
 // Colors
 
-
+$colors: (
+    white: #F2F2FC,
+    greyBright: lightslategrey,
+    greyMedium: #5F6774,
+    greyDark: #363636,
+    darkGreen: darkslategrey,
+);
 
 
 .wide_background {
@@ -11,16 +17,14 @@
 
 
 .userStatsBox {
-  background:whitesmoke;
+  background: map-get($colors, white);
 }
 
 .header_top {
-  background: #363636;
+  background: map-get($colors, greyDark);
+  color: map-get($colors, white);
 }
 
-.header_top {
-  color: whitesmoke;
-}
 
 button , button.timer {
   background: #5F6774;
@@ -32,12 +36,12 @@ button , button.timer {
 }
 
 .finished {
-  background: #F2F2FC;
+  background: map-get($colors, greyMedium);
 }
 
 
 
 footer {
-  background: #363636;
-  color: whitesmoke;
+  background: map-get($colors, greyDark);
+  color: map-get($colors, white);
 }
