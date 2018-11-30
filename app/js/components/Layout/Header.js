@@ -403,14 +403,14 @@ class Header extends React.Component {
             showAccountOptions: 'none',
             displayMobileMenu: 'none'
         })
-    }
+    };
 
     // Desktop LogIn Box
 
     generateDesktopLogIn () {
         return (
                     <li style={{ display: this.state.showLoginPanel }}>
-            <span onClick={this.logIn} > Login </span>
+                        <span onClick={this.logIn}> <a name ="LogIn"> Login </a></span>
 
 
             <div className="LogIn" style ={{ display: this.state.toggleDisplayLogIn }} >
@@ -541,7 +541,7 @@ class Header extends React.Component {
         return (   <div className="header_mobile">
 
                 <ul className="mobile_logo">
-                    <li><em> Zen Assistant </em></li>
+                    <li><em> <a name ="LogIn"> Zen Assistant </a></em></li>
                 </ul>
 
                 <div className="mobile_bar">
@@ -561,7 +561,7 @@ class Header extends React.Component {
 
                         {/* LOG IN Box - moved outside of UL */}
                         <li style={{display: this.state.showLoginPanel}}>
-                            <span onClick={this.logIn}> Login </span>
+                            <span onClick={this.logIn}>  Login </span>
                         </li>
 
                         {this.generateMobileMyAccount()}
@@ -667,7 +667,7 @@ class Header extends React.Component {
 
                     <div className="userStatsBox" style={{display: this.state.userStatsDisplay}}>
 
-                        <div className="closeSummary" onClick={this.closeSummary}><img src='/app/images/close_box.png' /> </div>
+                        <div className="closeSummary" onClick={this.closeSummary}><img src='/01_Meditation_Assistant/app/images/close_box.png' /> </div>
                         <table className="stats_table">
                             <thead>
                             <tr>
