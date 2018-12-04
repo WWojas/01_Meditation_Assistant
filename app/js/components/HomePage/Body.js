@@ -10,9 +10,13 @@ class Body extends React.Component {
         this.state = {
             starterDisplay: 'block',
             counterDisplay: 'none',
+
             current_time: 15,
             seconds: 0,
             minutes: 0,
+            resume_min: 0,
+            resume_sec: 0,
+
             userTimerError: false,
 
             button_display: 'block',
@@ -219,7 +223,7 @@ class Body extends React.Component {
                                                 // TIMER SETUP
 
     timerSetup () {
-return (
+    return (
     <div>
         <input style={{ display: this.state.starterDisplay}} value= {this.state.current_time} onChange={this.setUserTimer} type='text'/>
         <span className="minString" style={{ display: this.state.showMinString} }> min </span>
@@ -287,6 +291,7 @@ return (
                     display_pause_button: 'block',
 
                 });
+
             }
         }, 1000)
     };
@@ -308,6 +313,7 @@ return (
 
     // STOP & RESET TIMER FUNCTIONS
     resetCountDown = () => {
+
         clearInterval(this.timer);
         this.heart.pause();
         this.heart.currentTime = 0;
@@ -337,7 +343,10 @@ return (
             resume_button: 'block',
             reset_display: 'block',
             didUserPause: true,
-            display_pause_button: 'none'
+            display_pause_button: 'none',
+
+            resume_min: this.state.minutes,
+            resume_sec: this.state.seconds,
         })
 
     };
@@ -348,17 +357,14 @@ return (
     resumeCounter = () => {
         this.heart.play();
 
-        let resume_min = this.state.minutes;
+        // let resume_min = this.state.minutes;
+        // let resume_sec = this.state.seconds;
 
-        this.setState ({
-            current_time: resume_min
-        });
 
-        console.log(this.state.current_time);
+        console.log(this.state.resume_min);
+        console.log(this.state.resume_sec);
 
-        // var b = moment().add(this.state.current_time, 'minutes');
-
-        var b = moment().add(resume_min, 'minutes');
+        var b = moment().add(this.state.resume_min, 'minutes');
 
 
         this.timer = setInterval(() => {
@@ -378,10 +384,10 @@ return (
                 timerStarted: true,
                 didUserPause: false,
                 display_pause_button: 'block',
-
-
-
             });
+            console.log(this.state.minutes);
+            console.log(this.state.seconds);
+
         }, 1000)
     };
 

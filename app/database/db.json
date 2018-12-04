@@ -89,6 +89,18 @@
       "duration": 1,
       "userID": 1,
       "id": 12
+    },
+    {
+      "date": "Monday, December 3, 2018 11:57 AM",
+      "duration": 0,
+      "userID": 2,
+      "id": 13
+    },
+    {
+      "date": "Tuesday, December 4, 2018 1:34 PM",
+      "duration": 0,
+      "userID": 2,
+      "id": 14
     }
   ]
 }
