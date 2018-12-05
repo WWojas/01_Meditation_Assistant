@@ -39,14 +39,8 @@ class Header extends React.Component {
             checkUserLogin: '',
 
 
-
-
             // empty array for storing fetched user data
             sessions: [],
-
-
-
-
 
         }
     };
@@ -414,8 +408,10 @@ class Header extends React.Component {
 
 
             <div className="LogIn" style ={{ display: this.state.toggleDisplayLogIn }} >
-
                 <form>
+                    <div onClick={this.hideLogInBox} className="closeBox">
+                        X
+                    </div>
                     <h2> Already our Member? Log in now </h2>
                     <input onChange={this.typeMail} type='mail'
                            value={this.state.email}/> Email
@@ -432,6 +428,12 @@ class Header extends React.Component {
         </li>
         )
     }
+
+    hideLogInBox = () => {
+        this.setState({
+            toggleDisplayLogIn: 'none'
+        })
+    };
 
     // Desktop LogIn Error Box
 
@@ -468,6 +470,9 @@ class Header extends React.Component {
 
                 <div className="SignUp" style ={{ display: this.state.toggleDisplaySignUp }}>
                     <form>
+                        <div onClick={this.hideSignUpBox} className="closeBox">
+                            X
+                        </div>
                         <h2> Interested in meditation? Come join our club </h2>
                         <input onChange={ this.typeName} type='text' value={this.state.username}/> Full name
                         <input onChange={ this.typeMail} type='mail' value={this.state.email}/> Email
@@ -488,6 +493,12 @@ class Header extends React.Component {
             </li>
         )
     }
+
+    hideSignUpBox = () => {
+        this.setState ({
+            toggleDisplaySignUp: 'none'
+        })
+    };
 
 
     // Desktop SignUp Error Boxex
@@ -607,6 +618,9 @@ class Header extends React.Component {
         return (
             <div className="SignUp" style={{display: this.state.toggleDisplaySignUp}}>
                 <form>
+                    <div onClick={this.hideSignUpBox} className="closeBox">
+                        X
+                    </div>
                     <h2> Interested in meditation? Come join our club </h2>
                     <input onChange={this.typeName} type='text' value={this.state.username}/> Full name
                     <input onChange={this.typeMail} type='mail' value={this.state.email}/> Email
@@ -625,6 +639,11 @@ class Header extends React.Component {
         )
     }
 
+    hideSignUpBox = () => {
+        this.setState ({
+            toggleDisplaySignUp: 'none'
+        })
+    };
 
 
     // Mobile LogIn Box
@@ -634,6 +653,9 @@ class Header extends React.Component {
             <div className="LogIn" style ={{ display: this.state.toggleDisplayLogIn }} >
 
                 <form>
+                    <div onClick={this.hideLogInBox} className="closeBox">
+                        X
+                    </div>
                     <h2> Already our Member? Log in now </h2>
                     <input onChange={this.typeMail} type='mail'
                            value={this.state.email}/> Email
@@ -645,6 +667,12 @@ class Header extends React.Component {
             </div>
         )
     }
+
+    hideLogInBox = () => {
+        this.setState({
+            toggleDisplayLogIn: 'none'
+        })
+    };
 
 
     // Mobile MyAccount

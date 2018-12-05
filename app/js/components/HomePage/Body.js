@@ -79,12 +79,14 @@ class Body extends React.Component {
 
             this.setState({
                 current_time: 59,
+                userTimerError: true
 
             })
 
         } else {
             this.setState({
                 current_time: this.state.current_time + 1,
+                userTimerError: false
 
             })
         }
@@ -104,14 +106,17 @@ class Body extends React.Component {
 
 
     subtractMinutes = () => {
-        if (this.state.current_time <= 0) {
+        if (this.state.current_time < 2) {
             this.setState({
                 current_time: 1,
+                userTimerError: true,
+
             })
 
         } else {
             this.setState({
                 current_time: this.state.current_time - 1,
+                userTimerError: false
             })
         }
     };
@@ -123,7 +128,7 @@ class Body extends React.Component {
         if ( this.state.userTimerError === true) {
 
          return  <div className="userTimerError">
-                <p> Only numbers within the <strong> range 1-59 </strong> are allowed</p>
+                <p> Only numbers within the <strong> range 1-60 </strong> are allowed</p>
             </div>
         }
 
@@ -132,11 +137,11 @@ class Body extends React.Component {
     // SETTING MINUTES USING KEYBOARD
     setUserTimer = (event) => {
 
-        if (event.target.value <= 0) {
+        if (event.target.value < 1) {
 
             this.setState({
                 current_time: 1,
-                userTimerError: false
+                userTimerError: true
 
             })
         } else if (Number.isNaN(Number(event.target.value))) {
@@ -146,11 +151,11 @@ class Body extends React.Component {
             })
         }
 
-        else if (event.target.value > 59) {
+        else if (event.target.value >= 58) {
 
             this.setState({
-                current_time: 59,
-                userTimerError: false
+                current_time: 60,
+                userTimerError: true,
 
             })
 
@@ -267,7 +272,6 @@ class Body extends React.Component {
                     button_display: 'block',
                     reset_display: 'block',
                     timerStarted: false,
-
                 })
 
 
@@ -357,37 +361,49 @@ class Body extends React.Component {
     resumeCounter = () => {
         this.heart.play();
 
-        // let resume_min = this.state.minutes;
-        // let resume_sec = this.state.seconds;
-
-
-        console.log(this.state.resume_min);
-        console.log(this.state.resume_sec);
-
         var b = moment().add(this.state.resume_min, 'minutes');
+        var c = moment().add(this.state.resume_sec, 'seconds');
 
 
         this.timer = setInterval(() => {
 
             var secondDiff = b.diff(moment());
+            var thirdDiff = c.diff(moment());
 
-            let new_seconds = Math.floor((secondDiff % (1000 * 60)) / 1000);
-            let new_minutes = Math.floor((secondDiff % (1000 * 60 * 60)) / (1000 * 60));
+            console.log(`minutes diff: `+ secondDiff);
+            console.log(`seconds diff: ` + thirdDiff);
 
-            this.setState({
-                minutes: new_minutes < 10 ? '0' + new_minutes : new_minutes,
-                seconds: new_seconds < 10 ? '0' + new_seconds : new_seconds,
-                counterDisplay: 'block',
-                starterDisplay: 'none',
-                button_display: 'none',
-                reset_display: 'block',
-                timerStarted: true,
-                didUserPause: false,
-                display_pause_button: 'block',
-            });
-            console.log(this.state.minutes);
-            console.log(this.state.seconds);
+            if (secondDiff <= 0) {
+                clearInterval(this.timer);
+                this.bell.play();
 
+                this.muteSound();
+
+                this.setState({
+                    showPopUp: 'block',
+                    button_display: 'block',
+                    reset_display: 'block',
+                    timerStarted: false,
+                })
+
+            } else {
+                    let new_seconds = Math.floor((thirdDiff % (1000 * 60)) / 1000 );
+                    let new_minutes = Math.floor((secondDiff % (1000 * 60 * 60)) / (1000 * 60));
+
+                    this.setState({
+                        minutes: new_minutes < 10 ? '0' + new_minutes : new_minutes +1,
+                        seconds: new_seconds < 10 ? '0' + new_seconds : new_seconds +1,
+                        counterDisplay: 'block',
+                        starterDisplay: 'none',
+                        button_display: 'none',
+                        reset_display: 'block',
+                        timerStarted: true,
+                        didUserPause: false,
+                        display_pause_button: 'block',
+                    });
+                    console.log(`min:` + this.state.minutes);
+                    console.log(`sec:` + this.state.seconds);
+                }
         }, 1000)
     };
 
@@ -418,7 +434,7 @@ class Body extends React.Component {
 
         this.setState({
             selected_track: element,
-            display_selected_track: '#07024F',
+            display_selected_track: 'lightslategrey',
         })
     };
 
@@ -448,7 +464,7 @@ class Body extends React.Component {
 
         this.setState({
             selected_track: element,
-            display_selected_track: '#07024F',
+            display_selected_track: 'lightslategrey',
         })
     };
 
@@ -494,7 +510,10 @@ class Body extends React.Component {
 
     showUserNotLoggedInError () {
         return (
-            <div className="showUserNotLoggedIn" style={{display: this.state.showUserNotLoggedIn}} onMouseLeave={this.HideUserNotLoggedInError}>
+            <div className="showUserNotLoggedIn" style={{display: this.state.showUserNotLoggedIn}}>
+                <div onClick={this.HideUserNotLoggedInError} className="closeBox">
+                    X
+                </div>
                 <h2> Hang on a minute!</h2>
                 <p><em> You cannot save your session until you <a href="#LogIn" >Log In </a> </em></p>
 
@@ -595,7 +614,7 @@ class Body extends React.Component {
                         { this.timerSetup() }
 
 
-                        {/* ERROR BOX if Timer input is less than 1 and more than 59 minutes */}
+                        {/* ERROR BOX if Timer input is less than 1 and more than 60 minutes */}
                         { this.userTimeError () }
 
                         { this.addTimerMinutes() }
