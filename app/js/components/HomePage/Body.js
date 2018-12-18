@@ -1,6 +1,5 @@
 import React from 'react';
 import moment from "moment";
-import Sound from 'react-sound';
 
 
 
@@ -11,18 +10,15 @@ class Body extends React.Component {
             starterDisplay: 'block',
             counterDisplay: 'none',
 
-            current_time: 15,
+            current_time: 900,
             seconds: 0,
             minutes: 0,
-            resume_min: 0,
-            resume_sec: 0,
+            paused_seconds: 0,
 
             userTimerError: false,
 
             button_display: 'block',
             reset_display: 'none',
-            resume_timer_sec_value: 0,
-            resume_timer_min_value: 0,
 
             chakra_music: [
                 'Crown Chakra',
@@ -75,17 +71,17 @@ class Body extends React.Component {
 
 
     addMinutes = () => {
-        if (this.state.current_time > 59) {
+        if (this.state.current_time > 3600) {
 
             this.setState({
-                current_time: 59,
+                current_time: 3600,
                 userTimerError: true
 
             })
 
         } else {
             this.setState({
-                current_time: this.state.current_time + 1,
+                current_time: this.state.current_time + 60,
                 userTimerError: false
 
             })
@@ -106,16 +102,16 @@ class Body extends React.Component {
 
 
     subtractMinutes = () => {
-        if (this.state.current_time < 2) {
+        if (this.state.current_time < 60) {
             this.setState({
-                current_time: 1,
+                current_time: 60,
                 userTimerError: true,
 
             })
 
         } else {
             this.setState({
-                current_time: this.state.current_time - 1,
+                current_time: this.state.current_time - 60,
                 userTimerError: false
             })
         }
@@ -128,7 +124,7 @@ class Body extends React.Component {
         if ( this.state.userTimerError === true) {
 
          return  <div className="userTimerError">
-                <p> Only numbers within the <strong> range 1-60 </strong> are allowed</p>
+                <p> Only time within the <strong> range of 1-60 </strong> is allowed</p>
             </div>
         }
 
@@ -227,13 +223,25 @@ class Body extends React.Component {
 
                                                 // TIMER SETUP
 
+    convertSecondsToTimer = (sec) => {
+        const minutes = Math.floor( sec / 60 );
+        const seconds = sec - (minutes * 60);
+
+        const formatedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+        const formatedSeconds = seconds < 10 ? `0${seconds}` : seconds;
+
+        return `${formatedMinutes}:${formatedSeconds}`;
+    };
+
+
+
     timerSetup () {
     return (
     <div>
-        <input style={{ display: this.state.starterDisplay}} value= {this.state.current_time} onChange={this.setUserTimer} type='text'/>
+        <input style={{ display: this.state.starterDisplay}} value= {this.convertSecondsToTimer(this.state.current_time)} onChange={this.setUserTimer} type='text'/>
         <span className="minString" style={{ display: this.state.showMinString} }> min </span>
 
-        <h2 style={{ display: this.state.counterDisplay}}> {this.state.minutes}:{this.state.seconds} </h2>
+        <h2 style={{ display: this.state.counterDisplay}}> { this.convertSecondsToTimer(this.state.current_time)} </h2>
     </div>
     )
     }
@@ -252,16 +260,16 @@ class Body extends React.Component {
         this.heart.play();
 
 
-        var b = moment().add(this.state.current_time, 'minutes');
+        const time  = this.state.current_time;
 
+        const futureTime = moment().add(time, 'seconds').unix();
 
         // Interval
         this.timer = setInterval(() => {
 
-            var secondDiff = b.diff(moment());
 
             // Resets timer, makes Bell sound and stops ambient music
-            if (secondDiff <= 0) {
+            if (this.state.current_time === 0) {
                 clearInterval(this.timer);
                 this.bell.play();
 
@@ -278,12 +286,12 @@ class Body extends React.Component {
                 // Starts timer, hides initial counter and displays countdown timer
             } else {
 
-                let new_seconds = Math.floor((secondDiff % (1000 * 60)) / 1000);
-                let new_minutes = Math.floor((secondDiff % (1000 * 60 * 60)) / (1000 * 60));
+                const now = moment().unix();
+
 
                 this.setState({
-                    minutes: new_minutes < 10 ? '0' + new_minutes : new_minutes,
-                    seconds: new_seconds < 10 ? '0' + new_seconds : new_seconds,
+
+                    current_time: futureTime - now,
 
                     timerStarted: true,
                     counterDisplay: 'block',
@@ -295,7 +303,6 @@ class Body extends React.Component {
                     display_pause_button: 'block',
 
                 });
-
             }
         }, 1000)
     };
@@ -304,11 +311,12 @@ class Body extends React.Component {
     // FADING OFF THE MUSIC
     muteSound = () => {
 
-        setInterval(() => {
-            if (this.heart.volume - 0.05 >= 0) {
-                this.heart.volume -= 0.05;
+       let muteInterval = setInterval(() => {
+            if (this.heart.volume.toFixed(2) - 0.05 >= 0) {
+                this.heart.volume = this.heart.volume.toFixed(2) - 0.05;
             } else {
                 this.heart.pause();
+                clearInterval(muteInterval)
             }
 
         }, 500);
@@ -323,7 +331,7 @@ class Body extends React.Component {
         this.heart.currentTime = 0;
 
         this.setState({
-            current_time: 15,
+            current_time: 900,
             starterDisplay: 'block',
             counterDisplay: 'none',
             button_display: 'block',
@@ -341,19 +349,21 @@ class Body extends React.Component {
     pauseCounter = () => {
         this.heart.pause();
 
-        clearInterval(this.timer);
-
         this.setState({
             resume_button: 'block',
             reset_display: 'block',
             didUserPause: true,
             display_pause_button: 'none',
 
-            resume_min: this.state.minutes,
-            resume_sec: this.state.seconds,
-        })
+        });
+
+        clearInterval(this.timer);
+
 
     };
+
+
+
 
 
     // RESUME TIMER FUNCTION
@@ -361,19 +371,15 @@ class Body extends React.Component {
     resumeCounter = () => {
         this.heart.play();
 
-        var b = moment().add(this.state.resume_min, 'minutes');
-        var c = moment().add(this.state.resume_sec, 'seconds');
 
+        const time  = this.state.current_time;
+
+        const futureTime = moment().add(time, 'seconds').unix();
 
         this.timer = setInterval(() => {
 
-            var secondDiff = b.diff(moment());
-            var thirdDiff = c.diff(moment());
 
-            console.log(`minutes diff: `+ secondDiff);
-            console.log(`seconds diff: ` + thirdDiff);
-
-            if (secondDiff <= 0) {
+            if (this.state.current_time <= 0) {
                 clearInterval(this.timer);
                 this.bell.play();
 
@@ -387,12 +393,12 @@ class Body extends React.Component {
                 })
 
             } else {
-                    let new_seconds = Math.floor((thirdDiff % (1000 * 60)) / 1000 );
-                    let new_minutes = Math.floor((secondDiff % (1000 * 60 * 60)) / (1000 * 60));
+
+                const now = moment().unix();
 
                     this.setState({
-                        minutes: new_minutes < 10 ? '0' + new_minutes : new_minutes +1,
-                        seconds: new_seconds < 10 ? '0' + new_seconds : new_seconds +1,
+                        current_time: futureTime - now,
+
                         counterDisplay: 'block',
                         starterDisplay: 'none',
                         button_display: 'none',
@@ -401,8 +407,8 @@ class Body extends React.Component {
                         didUserPause: false,
                         display_pause_button: 'block',
                     });
-                    console.log(`min:` + this.state.minutes);
-                    console.log(`sec:` + this.state.seconds);
+
+
                 }
         }, 1000)
     };

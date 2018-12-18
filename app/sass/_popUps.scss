@@ -28,7 +28,7 @@
   height: 150px;
   font-size: 18px;
   padding: 15px;
-  background: map-get($colors, greyBright);
+  background: rebeccapurple;
   border: 1px solid lightgrey;
   border-radius: 5px;
   z-index: 2;
@@ -42,7 +42,7 @@
 // POPup
 
 .finished {
-  background: map-get($colors, darkGreen);
+  background: rebeccapurple;
   width: 400px;
   height: 300px;
   font-size: 20px;
@@ -76,7 +76,7 @@
 
 
 .showUserNotLoggedIn {
-  background: map-get($colors, darkGreen);
+  background: rebeccapurple;
   color: map-get($colors, white);
   width: 400px;
   height: 150px;

@@ -10,14 +10,14 @@ li {
 
 .music_buttons {
   width: 250px;
-  height: 25px;
+  height: 30px;
   margin: 3px;
   font-size: 16px;
-  border: $thin-border;
   border-radius: 5px;
-  background: whitesmoke;
-  color: map-get($colors, darkGreen);
+  border: 4px solid lightgrey;
+  background-color: Transparent;
   font-weight: bold;
+
 
   &:hover {
     background: map-get($colors, greyBright);
@@ -46,9 +46,9 @@ button.timer {
 }
 
 button.plus {
-  border: 1px solid grey;
+  border: 4px solid lightgrey;
+  background-color: Transparent;
   border-radius: 50%;
-  background: darkred;
   margin: 0 10px;
   width: 100px;
   height: 100px;
@@ -56,13 +56,14 @@ button.plus {
   opacity: 0.5;
   &:hover {
     opacity: 1;
+    background: map-get($colors, greyBright);
   }
 }
 
 button.minus {
-  border: 1px solid grey;
+  border: 4px solid lightgrey;
+  background-color: Transparent;
   border-radius: 50%;
-  background: darkblue;
   margin: 0 10px;
   width: 100px;
   height: 100px;
@@ -70,6 +71,7 @@ button.minus {
   opacity: 0.5;
   &:hover {
     opacity: 1;
+    background: map-get($colors, greyBright);
   }
 }
 
