@@ -447,32 +447,32 @@ class Body extends React.Component {
 
                                                 // CHOOSE AMBIENT MUSIC
 
-    generateAmbientMusic() {
-
-        return (
-            <ul>
-                {
-
-                    this.state.ambient_music.map(element => {
-
-                        return <li key={(element)}> <button onClick = {()=>{ this.changeAmbientMusic(element)}}
-                       style = {{ background: this.state.selected_track === element && this.state.display_selected_track }}
-                                                            className='music_buttons'
-                        > {element} </button></li>
-                    })
-                }
-            </ul>
-        )
-    }
-
-
-    changeAmbientMusic = (element) => {
-
-        this.setState({
-            selected_track: element,
-            display_selected_track: 'lightslategrey',
-        })
-    };
+    // generateAmbientMusic() {
+    //
+    //     return (
+    //         <ul>
+    //             {
+    //
+    //                 this.state.ambient_music.map(element => {
+    //
+    //                     return <li key={(element)}> <button onClick = {()=>{ this.changeAmbientMusic(element)}}
+    //                    style = {{ background: this.state.selected_track === element && this.state.display_selected_track }}
+    //                                                         className='music_buttons'
+    //                     > {element} </button></li>
+    //                 })
+    //             }
+    //         </ul>
+    //     )
+    // }
+    //
+    //
+    // changeAmbientMusic = (element) => {
+    //
+    //     this.setState({
+    //         selected_track: element,
+    //         display_selected_track: 'lightslategrey',
+    //     })
+    // };
 
 
 
@@ -589,12 +589,12 @@ class Body extends React.Component {
     render() {
         return (
 
-            <div className="container wide_background">
 
-
-                <div className="music_choice">
+            <div className="wide_background">
+                <div className="container">
                     {this.loadSounds() }
 
+                <div className="music_choice">
 
                     <h1> Select your Ambient Music </h1>
 
@@ -603,8 +603,8 @@ class Body extends React.Component {
 
 
 
-                    <h2> Ambient Sounds Music </h2>
-                    { this.generateAmbientMusic () }
+                    {/*<h2> Ambient Sounds Music </h2>*/}
+                    {/*{ this.generateAmbientMusic () }*/}
 
 
                 </div>
@@ -649,7 +649,7 @@ class Body extends React.Component {
 
 
                 </div>
-
+                </div>
             </div>
 
         );

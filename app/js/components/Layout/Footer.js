@@ -3,8 +3,9 @@ import React from 'react';
 class Footer extends React.Component{
     render() {
         return (
-            <div className="container">
+
                 <footer>
+                    <div className="container">
 
                     {/* Footer Left Section */}
                     <div className="footer_left">
@@ -73,9 +74,9 @@ class Footer extends React.Component{
                         </div>
 
                     </div>
-
+                    </div>
                 </footer>
-            </div>
+
 
         );
     }

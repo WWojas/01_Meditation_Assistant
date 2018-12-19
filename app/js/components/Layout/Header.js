@@ -300,9 +300,12 @@ class Header extends React.Component {
 
     generateDesktopHeader () {
         return (
+
+
             <div className="header_top">
 
                 <ul>
+                    <div className="container">
                     <li><em> Zen Assistant </em></li>
                     <li> Meditation Music</li>
                     <li> Timer </li>
@@ -316,8 +319,8 @@ class Header extends React.Component {
 
 
                     <li> About </li>
+                    </div>
                 </ul>
-
 
             </div>
         )
@@ -549,7 +552,10 @@ class Header extends React.Component {
     // Mobile Header
 
     generateMobileHeader() {
-        return (   <div className="header_mobile">
+        return (
+
+            <div className="header_mobile">
+                <div className="container">
 
                 <ul className="mobile_logo">
                     <li><em> <a name ="LogIn"> Zen Assistant </a></em></li>
@@ -585,6 +591,7 @@ class Header extends React.Component {
 
                     {this.generateMobileLogIn()}
 
+                </div>
                 </div>
             </div>
         )
@@ -747,9 +754,12 @@ class Header extends React.Component {
 
 
         return (
-             <div className="container">
-                <header>
 
+
+             <div>
+
+
+                <header>
 
                     {/* MOBILE Section */}
                     { this.generateMobileHeader () }
@@ -760,9 +770,11 @@ class Header extends React.Component {
 
                     {/* Bottom part of Header */}
                     <div className="header_bottom">
+                        <div className="container">
 
                         <div className="header_picture_text">
                             <img src='app/images/Icon.jpg'/>
+
                             <h1> Improve Your Meditation Today</h1>
                             <p> Zen Assistant connects over 15.000 people daily on their journey to meditation mastery.</p>
 
@@ -770,10 +782,13 @@ class Header extends React.Component {
 
                                 with our professional set of chakra empowering soundwaves. </p>
                         </div>
+                        </div>
                     </div>
 
                 </header>
+
             </div>
+
         );
     }
 }
