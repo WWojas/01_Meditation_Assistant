@@ -21,20 +21,13 @@ class Body extends React.Component {
             reset_display: 'none',
 
             chakra_music: [
-                'Crown Chakra',
-                'Heart Chakra',
-                'Root Chakra',
-                'Sacral Chakra',
-                'Solar Plexus Chakra',
-                'Third Eye Chakra',
-                'Throat Chakra',
-            ],
-
-            ambient_music: [
-                'Rain',
-                'Airplane',
-                'Forest',
-                'Space'
+                { sound:'Crown Chakra', chakra_icon: 'crown_chakra_icon'},
+                { sound:'Third Eye Chakra', chakra_icon: 'third_eye_chakra_icon' },
+                { sound:'Throat Chakra', chakra_icon: 'throat_chakra_icon' },
+                { sound:'Heart Chakra', chakra_icon: 'heart_chakra_icon' },
+                { sound:'Solar Plexus Chakra',chakra_icon: 'solar_plexus_chakra_icon' },
+                { sound:'Sacral Chakra', chakra_icon: 'sacral_chakra_icon' },
+                { sound:'Root Chakra', chakra_icon: 'root_chakra_icon' },
             ],
 
 
@@ -424,10 +417,11 @@ class Body extends React.Component {
                 {
                     this.state.chakra_music.map(element => {
 
-                        return <li key={(element)}> <button onClick = {()=>{ this.changeChakraMusic(element)}}
-                         style = {{ background: this.state.selected_track === element && this.state.display_selected_track }}
+                        return <li key={(element.sound)}> <button onClick = {()=>{ this.changeChakraMusic(element.sound)}}
+                         style = {{ background: this.state.selected_track === element.sound }}
                                                             className='music_buttons'>
-                            {element} </button></li>
+
+                            <img src= {`/app/images/${element.chakra_icon}.png`} className="chakra_icon"/> </button></li>
                     })
                 }
 
@@ -440,39 +434,11 @@ class Body extends React.Component {
 
         this.setState({
             selected_track: element,
-            display_selected_track: 'lightslategrey',
+            chakra_icon: element,
         })
     };
 
 
-                                                // CHOOSE AMBIENT MUSIC
-
-    // generateAmbientMusic() {
-    //
-    //     return (
-    //         <ul>
-    //             {
-    //
-    //                 this.state.ambient_music.map(element => {
-    //
-    //                     return <li key={(element)}> <button onClick = {()=>{ this.changeAmbientMusic(element)}}
-    //                    style = {{ background: this.state.selected_track === element && this.state.display_selected_track }}
-    //                                                         className='music_buttons'
-    //                     > {element} </button></li>
-    //                 })
-    //             }
-    //         </ul>
-    //     )
-    // }
-    //
-    //
-    // changeAmbientMusic = (element) => {
-    //
-    //     this.setState({
-    //         selected_track: element,
-    //         display_selected_track: 'lightslategrey',
-    //     })
-    // };
 
 
 
@@ -596,17 +562,9 @@ class Body extends React.Component {
 
                 <div className="music_choice">
 
-                    <h1> Select your Ambient Music </h1>
+                    <h1> Select your Chakra Music </h1>
 
-                    <h2> Chakra Healing Music </h2>
                     { this.generateChakraMusic () }
-
-
-
-                    {/*<h2> Ambient Sounds Music </h2>*/}
-                    {/*{ this.generateAmbientMusic () }*/}
-
-
                 </div>
 
                 <div className ='timer'>
@@ -628,9 +586,6 @@ class Body extends React.Component {
 
                     </div>
 
-
-
-
                     {/* RENDERING START, PAUSE and RESET Buttons */}
 
 
@@ -646,9 +601,8 @@ class Body extends React.Component {
                     {/* RENDERING Congratulations pop-up upon finishing meditation */}
                     { this.showCongratulationsPopUp() }
 
-
-
                 </div>
+
                 </div>
             </div>
 
