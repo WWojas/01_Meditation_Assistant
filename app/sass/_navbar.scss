@@ -342,6 +342,7 @@ p {
     padding: 20px;
     height: 370px;
     align-items: center;
+    z-index: 5;
 
     .closeBox {
       cursor: pointer;
@@ -398,6 +399,7 @@ p {
     text-align: center;
     padding: 20px;
     height: 290px;
+    z-index: 5;
   }
 
 

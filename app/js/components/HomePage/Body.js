@@ -21,18 +21,20 @@ class Body extends React.Component {
             reset_display: 'none',
 
             chakra_music: [
-                { sound:'Crown Chakra', chakra_icon: 'crown_chakra_icon'},
-                { sound:'Third Eye Chakra', chakra_icon: 'third_eye_chakra_icon' },
-                { sound:'Throat Chakra', chakra_icon: 'throat_chakra_icon' },
-                { sound:'Heart Chakra', chakra_icon: 'heart_chakra_icon' },
-                { sound:'Solar Plexus Chakra',chakra_icon: 'solar_plexus_chakra_icon' },
-                { sound:'Sacral Chakra', chakra_icon: 'sacral_chakra_icon' },
-                { sound:'Root Chakra', chakra_icon: 'root_chakra_icon' },
+                { sound:'Crown Chakra', chakra_icon: 'crown_chakra_icon', hover_text: 'Located at the top of the head the crown chakra gives us access to higher states of consciousness as we open to what is beyond our personal preoccupations and visions. The function of the Crown chakra is driven by consciousness and gets us in touch with the universal.'},
+                { sound:'Third Eye Chakra', chakra_icon: 'third_eye_chakra_icon', hover_text: 'The third eye chakra is an instrument to perceive the more subtle qualities of reality. It goes beyond the more physical senses into the realm of subtle energies. Awakening your third eye allows you to open up to an intuitive sensibility and inner perception.' },
+                { sound:'Throat Chakra', chakra_icon: 'throat_chakra_icon' , hover_text: 'The Throat chakra is about the expression of yourself: Your truth, purpose in life, creativity. Note that this chakra has a natural connection with the second chakra or sacral chakra, center of emotions and creativity as well. The throat chakra’s emphasis is on expressing and projecting the creativity into the world according to its perfect form or authenticity.'},
+                { sound:'Heart Chakra', chakra_icon: 'heart_chakra_icon', hover_text: 'The Heart chakra is all about connecting and relating. The emphasis here is on love, giving and receiving, and how open we are in relationships. Love is the energy that helps transfigure emotions and experiences. It’s an essential element in any relationship, whether it’s is with others or oneself.' },
+                { sound:'Solar Plexus Chakra',chakra_icon: 'solar_plexus_chakra_icon', hover_text: 'The main function of the Solar Plexus chakra is to provide actual momentum to move forward and realize personal desires and intentions in the world. It plays a fundamental role in the development of personal power. It feeds one’s direction in life and the actions taken in order to reach your goals. It influences preoccupations about social status and self-image.'},
+                { sound:'Sacral Chakra', chakra_icon: 'sacral_chakra_icon' , hover_text: 'The Sacral chakra is the center of our feelings and sensations. It’s particularly active in our sexuality and the expression of our sensual and sexual desires. Motivated by pleasure, it’s the driving force for the enjoyment of life through the senses, whether it’s auditory, through taste, touch, or sight. Opening your sacral chakra allows you to “feel” the world around and in us. As such, it’s an important chakra at the foundation of our feeling of well-being.'},
+                { sound:'Root Chakra', chakra_icon: 'root_chakra_icon', hover_text: 'The Root chakra provides the foundation on which we build our life. It supports us in growing and feeling safe into exploring all the aspects of life. It is related to our feeling of safety and security, whether it’s physical or regarding our bodily needs or metaphorical regarding housing and financial safety.'},
             ],
 
 
             selected_track: '',
             display_selected_track: '',
+
+
 
             showPopUp: 'none',
             showUserNotLoggedIn: 'none',
@@ -230,7 +232,7 @@ class Body extends React.Component {
 
     timerSetup () {
     return (
-    <div>
+    <div class="timer_middle">
         <input style={{ display: this.state.starterDisplay}} value= {this.convertSecondsToTimer(this.state.current_time)} onChange={this.setUserTimer} type='text'/>
         <span className="minString" style={{ display: this.state.showMinString} }> min </span>
 
@@ -417,11 +419,16 @@ class Body extends React.Component {
                 {
                     this.state.chakra_music.map(element => {
 
-                        return <li key={(element.sound)}> <button onClick = {()=>{ this.changeChakraMusic(element.sound)}}
-                         style = {{ background: this.state.selected_track === element.sound }}
-                                                            className='music_buttons'>
+                        return <li key={(element.sound)} className="chakra_li" >
+                            <div class="tooltip">
+                                <h1> {element.sound} </h1>
+                                <p> {element.hover_text}</p>
+                            </div>
 
-                            <img src= {`/app/images/${element.chakra_icon}.png`} className="chakra_icon"/> </button></li>
+                            <img src= {`/app/images/${element.chakra_icon}.png`} className="chakra_icon"
+                                 onClick = {()=>{ this.changeChakraMusic(element.sound)}}
+                                 style = {{ background: this.state.selected_track === element.sound && this.state.display_selected_track, borderRadius:"15px" }}
+                            /> </li>
                     })
                 }
 
@@ -432,10 +439,12 @@ class Body extends React.Component {
     // Function for passing selected Chakra Music src to the startTimer function
     changeChakraMusic = (element) => {
 
+
         this.setState({
             selected_track: element,
             chakra_icon: element,
-        })
+            display_selected_track: 'whitesmoke',
+        });
     };
 
 

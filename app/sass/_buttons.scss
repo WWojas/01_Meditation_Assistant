@@ -4,7 +4,7 @@
 $thin-border: 1px solid whitesmoke;
 $medium-border: 2px solid whitesmoke;
 
-ul, li {
+.chakra_li li, ul {
   list-style: none;
   margin: 0;
   padding:0;
@@ -15,15 +15,39 @@ ul, li {
   background-color: Transparent;
   border: 0;
 
+
+}
+
+.tooltip {
+  position: absolute;
+  right: 0;
+  top: 121px;
+  width: 250px;
+  border: 1px solid whitesmoke;
+  border-radius: 5px;
+  font-size: 16px;
+
+  background: rgba(212,228,239,1);
+  background: -moz-linear-gradient(left, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 50%, rgba(134,174,204,1) 100%);
+  background: -webkit-gradient(left top, right top, color-stop(0%, rgba(212,228,239,1)), color-stop(50%, rgba(134,174,204,1)), color-stop(100%, rgba(134,174,204,1)));
+  background: -webkit-linear-gradient(left, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 50%, rgba(134,174,204,1) 100%);
+  background: -o-linear-gradient(left, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 50%, rgba(134,174,204,1) 100%);
+  background: -ms-linear-gradient(left, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 50%, rgba(134,174,204,1) 100%);
+  background: linear-gradient(to right, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 50%, rgba(134,174,204,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d4e4ef', endColorstr='#86aecc', GradientType=1 );
+  display: none;
+
+  h1 {
+    font-size: 20px;
+  }
 }
 
 .chakra_icon {
-    height: 50px;
-    width: 50px;
+  height: 50px;
+  width: 50px;
   margin: 0 auto;
   position: relative;
   top: - 15px;
-
 
   &:hover {
     background: whitesmoke;
@@ -34,6 +58,12 @@ ul, li {
     }
 
   }
+
+.chakra_li:hover .tooltip  {
+     display: block;
+      z-index: 5;
+ }
+
 
 
 button {
