@@ -31,7 +31,7 @@
   background: rebeccapurple;
   border: 1px solid lightgrey;
   border-radius: 5px;
-  z-index: 2;
+  z-index: 5;
   text-align: center;
   position: absolute;
   left: calc(50% - 200px);
@@ -112,24 +112,3 @@
 }
 
 
-
-
-// MOBILE
-
-@media (max-width:768px) {
-
-  .showUserNotLoggedIn {
-    background: rebeccapurple;
-    color: #F2F2FC;
-    width: 350px;
-    height: 150px;
-    font-size: 20px;
-    border: 1px solid grey;
-    border-radius: 2%;
-    z-index: 2;
-    padding: 20px;
-    position: fixed;
-    left: calc(50% - 200px);
-    top: calc(50% - 150px);
-  }
-}

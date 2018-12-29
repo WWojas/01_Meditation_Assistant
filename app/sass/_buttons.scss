@@ -23,18 +23,17 @@ $medium-border: 2px solid whitesmoke;
   right: 0;
   top: 121px;
   width: 250px;
-  border: 1px solid whitesmoke;
   border-radius: 5px;
   font-size: 16px;
 
-  background: rgba(212,228,239,1);
-  background: -moz-linear-gradient(left, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 50%, rgba(134,174,204,1) 100%);
-  background: -webkit-gradient(left top, right top, color-stop(0%, rgba(212,228,239,1)), color-stop(50%, rgba(134,174,204,1)), color-stop(100%, rgba(134,174,204,1)));
-  background: -webkit-linear-gradient(left, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 50%, rgba(134,174,204,1) 100%);
-  background: -o-linear-gradient(left, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 50%, rgba(134,174,204,1) 100%);
-  background: -ms-linear-gradient(left, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 50%, rgba(134,174,204,1) 100%);
-  background: linear-gradient(to right, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 50%, rgba(134,174,204,1) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d4e4ef', endColorstr='#86aecc', GradientType=1 );
+  background: rgba(226,226,226,1);
+  background: -moz-linear-gradient(45deg, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+  background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(226,226,226,1)), color-stop(50%, rgba(219,219,219,1)), color-stop(51%, rgba(209,209,209,1)), color-stop(100%, rgba(254,254,254,1)));
+  background: -webkit-linear-gradient(45deg, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+  background: -o-linear-gradient(45deg, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+  background: -ms-linear-gradient(45deg, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+  border: 2px solid grey;
+  color: black;
   display: none;
 
   h1 {
@@ -91,9 +90,9 @@ button.plus {
   background-color: Transparent;
   border-radius: 50%;
   margin: 0 10px;
-  width: 100px;
-  height: 100px;
-  top: 50px;
+  width: 120px;
+  height: 120px;
+  top: 0;
   opacity: 0.5;
   &:hover {
     opacity: 1;
@@ -106,9 +105,9 @@ button.minus {
   background-color: Transparent;
   border-radius: 50%;
   margin: 0 10px;
-  width: 100px;
-  height: 100px;
-  top: 50px;
+  width: 120px;
+  height: 120px;
+  top: 0;
   opacity: 0.5;
   &:hover {
     opacity: 1;

@@ -234,7 +234,9 @@ class Body extends React.Component {
     return (
     <div class="timer_middle">
         <input style={{ display: this.state.starterDisplay}} value= {this.convertSecondsToTimer(this.state.current_time)} onChange={this.setUserTimer} type='text'/>
-        <span className="minString" style={{ display: this.state.showMinString} }> min </span>
+        <div class="min">
+            <span className="minString" style={{ display: this.state.showMinString} }> min </span>
+        </div>
 
         <h2 style={{ display: this.state.counterDisplay}}> { this.convertSecondsToTimer(this.state.current_time)} </h2>
     </div>
@@ -580,25 +582,29 @@ class Body extends React.Component {
                     <h1> Select your Meditation Time </h1>
 
 
-                    <div className="timer_box">
-
-                        { this.subtractTimerMinutes() }
-
                         { this.timerSetup() }
 
 
                         {/* ERROR BOX if Timer input is less than 1 and more than 60 minutes */}
                         { this.userTimeError () }
 
-                        { this.addTimerMinutes() }
 
+
+                    <div className="timer_add_subtract">
+
+                        { this.subtractTimerMinutes() }
+                        { this.addTimerMinutes() }
 
                     </div>
 
+
+
                     {/* RENDERING START, PAUSE and RESET Buttons */}
 
-
+                    <div className="timer_box">
                     { this.showStartButton () }
+
+
 
                     { this.showPauseButton () }
 
@@ -610,6 +616,7 @@ class Body extends React.Component {
                     {/* RENDERING Congratulations pop-up upon finishing meditation */}
                     { this.showCongratulationsPopUp() }
 
+                </div>
                 </div>
 
                 </div>

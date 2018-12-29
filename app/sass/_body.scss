@@ -14,8 +14,9 @@
   position: relative;
   text-align: center;
   display: grid;
+  margin-bottom: 15px;
   h1 {
-    font-size: 34px;
+    font-size: 27px;
     width: 100%;
     height: auto;
     position: relative;
@@ -26,7 +27,6 @@
     color: whitesmoke;
     border: none;
     width: 260px;
-    height: 200px;
     font-size: 100px;
     display: block;
     text-align: center;
@@ -42,11 +42,8 @@
   text-align:center;
   display: flex;
   justify-content: center;
-}
+  }
 
-.timer_middle {
-  width: 80%;
-}
 
 
 
@@ -71,6 +68,7 @@
     height: auto;
     position: relative;
     margin-top: 15px;
+    text-align: center;
   }
 }
 
@@ -79,27 +77,23 @@
 .minString {
   padding: 0;
   font-size: 40px;
-  margin-top: 0;
-  position: absolute;
-  top: 45%;
-  left: calc( 50% - 20px);
+ margin: 0 auto;
+  width:100%;
+  position: relative;
+
+
+}
+
+
+
+.timer_add_subtract {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 20px;
+  margin-bottom: -10px;
 
 }
 
 
 
-// MOBILE
-
-@media (max-width:768px) {
-
-  .minString {
-    padding: 0;
-    font-size: 40px;
-    margin-top: 0;
-    position: absolute;
-    top: 42%;
-    left: calc( 50% - 20px);
-  }
-
-
-}

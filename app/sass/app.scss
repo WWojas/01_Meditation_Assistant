@@ -6,6 +6,7 @@
 @import "_body";
 @import "_buttons";
 @import "_popUps";
+@import "mobile";
 
 
 
@@ -15,70 +16,6 @@
 }
 
 
-.container {
-  width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  position: relative;
-}
-
-
-
-@media (max-width:1050px) {
-  .container {
-    flex-wrap: wrap;
-    width: 100%;
-  }
-
-  .mobile_burger {
-    z-index:5;
-  }
-
-}
-
-@media (max-width: 600px) {
-  .container {
-    flex-wrap: wrap;
-    width: 50%;
-  }
-
-  .header_picture_text img {
-    display: none;
-  }
-
-  .header_picture_text {
-    font-size: 18px;
-  }
-
-  .music_choice {
-    background-size: 205px 450px;
-
-    & > h1 {
-      font-size: 26px
-    }
-
-  }
-
-  .mobile_bar > img {
-    position: relative;
-    left: 20px
-  }
-
-  .tooltip {
-    position: absolute;
-    width: 205px;
-    right: -115px;
-    top: 121px;
-
-  }
-
-  .mobile_burger {
-    z-index:5;
-  }
-
-
-}
 
 
 

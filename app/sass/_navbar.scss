@@ -8,9 +8,16 @@
 
 
 .SignUp {
-  background: rebeccapurple;
+
+  background: rgba(226,226,226,1);
+  background: -moz-linear-gradient(45deg, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+  background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(226,226,226,1)), color-stop(50%, rgba(219,219,219,1)), color-stop(51%, rgba(209,209,209,1)), color-stop(100%, rgba(254,254,254,1)));
+  background: -webkit-linear-gradient(45deg, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+  background: -o-linear-gradient(45deg, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+  background: -ms-linear-gradient(45deg, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
   border: 2px solid grey;
   border-radius: 10px;
+  color: black;
   width: 800px;
   display: flex;
   position: absolute;
@@ -64,9 +71,16 @@
 // LogIn box
 
 .LogIn {
-  background: rebeccapurple;
+
+  background: rgba(226,226,226,1);
+  background: -moz-linear-gradient(45deg, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+  background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(226,226,226,1)), color-stop(50%, rgba(219,219,219,1)), color-stop(51%, rgba(209,209,209,1)), color-stop(100%, rgba(254,254,254,1)));
+  background: -webkit-linear-gradient(45deg, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+  background: -o-linear-gradient(45deg, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+  background: -ms-linear-gradient(45deg, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
   border: 2px solid grey;
   border-radius: 10px;
+  color: black;
   width: 800px;
   display: flex;
   position: absolute;
@@ -115,11 +129,18 @@
 // My Account
 
 .myAccount {
-  background: rebeccapurple;
+
+  background: rgba(226,226,226,1);
+  background: -moz-linear-gradient(45deg, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+  background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(226,226,226,1)), color-stop(50%, rgba(219,219,219,1)), color-stop(51%, rgba(209,209,209,1)), color-stop(100%, rgba(254,254,254,1)));
+  background: -webkit-linear-gradient(45deg, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+  background: -o-linear-gradient(45deg, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+  background: -ms-linear-gradient(45deg, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
   border: 4px solid whitesmoke;
   border-radius: 10px;
   width: 355px;
   display: flex;
+  color: black;
   position: absolute;
   top: 50px;
   right: 135px;
@@ -255,185 +276,4 @@ p {
   top: 25px;
   width: 35px;
   height: 35px;
-}
-
-// MOBILE
-
-@media (max-width:768px) {
-
-
-  .LogIn {
-    background: rebeccapurple;
-    border: 2px solid grey;
-    border-radius: 10px;
-    width: 350px;
-    font-size: 12px;
-    display: flex;
-    position: absolute;
-    top: 100px;
-    left: calc( 50% - 175px);
-    text-align: center;
-    padding: 0 10px;
-    height: 250px;
-    align-items: center;
-    z-index: 5;
-
-    .closeBox {
-      cursor: pointer;
-      position: absolute;
-      font-size: 20px;
-      right: -10px;
-      top: 5px;
-      width: 50px;
-      padding: 0;
-      margin: 0;
-    }
-
-  }
-
-  .LogIn input {
-
-      width: 100%;
-      height: 10px;
-      padding: 20px;
-      font-size: 18px;
-
-
-  }
-
-  .LogIn h2 {
-    margin-bottom: 10px;
-    margin-top: 20px;
-  }
-
-
-
-
-
-  .LogIn button {
-    margin-top: 5px;
-    width: 100%;
-    height: 50px;
-    font-size: 12px;
-    border-radius: 5px;
-  }
-
-  .LogIn span {
-    margin-top: 5px;
-    width: 100%;
-    height: 50px;
-    font-size: 12px;
-    border-radius: 5px;
-  }
-
-
-
-  .SignUp {
-    background: rebeccapurple;
-    border: 2px solid grey;
-    border-radius: 10px;
-    width: 350px;
-    font-size: 12px;
-    display: flex;
-    position: absolute;
-    top: 100px;
-    left: calc( 50% - 175px);
-    text-align: center;
-    padding: 20px;
-    height: 370px;
-    align-items: center;
-    z-index: 5;
-
-    .closeBox {
-      cursor: pointer;
-      position: absolute;
-      font-size: 20px;
-      right: -10px;
-      top: 5px;
-      width: 50px;
-      padding: 0;
-      margin: 0;
-    }
-
-  }
-
-  .SignUp  input {
-    width: 100%;
-    height: 10px;
-    padding: 20px;
-    font-size: 20px;
-  }
-
-  .SignUp h2 {
-    font-size: 20px;
-  }
-
-
-
-  .SignUp button {
-    margin-top: 20px;
-    width: 100%;
-    height: 50px;
-    font-size: 12px;
-    border-radius: 5px;
-  }
-
-  .SignUp span {
-    margin-top: 20px;
-    width: 100%;
-    height: 50px;
-    font-size: 16px;
-    border-radius: 5px;
-  }
-
-
-  .myAccount {
-    background: rebeccapurple;
-    border: 4px solid whitesmoke;
-    border-radius: 10px;
-    width: 205px;
-    right: 0;
-    display: flex;
-    position: absolute;
-    top: -10px;
-    text-align: center;
-    padding: 20px;
-    height: 290px;
-    z-index: 5;
-  }
-
-
-  .myAccount button {
-    width: 170px;
-  }
-
-  .myAccountButtons {
-    display: grid;
-    justify-content: center;
-  }
-
-  .userStatsBox {
-    color: black;
-    position: absolute;
-    margin: 0;
-    top: -8px;
-    width: 450px;
-    height: 454px;
-    right: -3px;
-    overflow-y: scroll;
-  }
-
-  .closeSummary {
-    position: relative
-  }
-
-  .closeSummary img {
-    position: absolute;
-    right: 20px;
-    top: 25px;
-    width: 35px;
-    height: 35px;
-  }
-
-
 }

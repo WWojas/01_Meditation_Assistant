@@ -1,0 +1,613 @@
+
+
+
+// Container
+
+@media (max-width:1049px) {
+    .container {
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    .mobile_burger {
+        z-index:5;
+    }
+
+}
+
+@media (max-width: 600px) {
+    .container {
+        flex-wrap: wrap;
+        width: 50%;
+    }
+
+    .header_picture_text img {
+        display: none;
+    }
+
+    .header_picture_text {
+        font-size: 18px;
+    }
+
+    .music_choice {
+        background-size: 205px 450px;
+
+        & > h1 {
+            font-size: 26px
+        }
+
+    }
+
+    .mobile_bar > img {
+        position: relative;
+        left: 20px
+    }
+
+
+
+    .mobile_burger {
+        z-index:5;
+    }
+
+
+}
+
+
+.container {
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+
+
+
+// Navbar
+
+
+@media (max-width: 320px) {
+    .LogIn {
+        width: 300px;
+        left: calc(50% - 150px);
+        height: 330px;
+        color:black
+    }
+
+    .LogIn button {
+        height: 45px;
+    }
+
+    .LogIn h2 {
+        margin-top: 25px;
+    }
+
+    .LogIn .closeBox {
+        cursor: pointer;
+        position: absolute;
+        font-size: 25px;
+        right: 5px;
+        top: 5px;
+        width: 50px;
+        padding: 0;
+        margin: 0;
+        border: 1px solid black;
+        border-radius: 13%;
+        & hover {
+            background: whitesmoke;
+        }
+
+    }
+
+    .SignUp {
+        width: 300px;
+        left: calc(50% - 150px);
+        height: 450px;
+        color:black
+    }
+
+    .SignUp button {
+        height: 45px;
+    }
+
+    .SignUp h2 {
+        margin-top: 25px;
+    }
+
+    .SignUp .closeBox {
+        cursor: pointer;
+        position: absolute;
+        font-size: 25px;
+        right: 5px;
+        top: 5px;
+        width: 50px;
+        padding: 0;
+        margin: 0;
+        border: 1px solid black;
+        border-radius: 13%;
+        & hover {
+            background: whitesmoke;
+        }
+
+    }
+
+
+
+
+    .showUsernameSignUpError, .showPasswordSignUpError, .showEmailSignUpError, .showUserLoginError {
+        width: 250px;
+        height: 150px;
+        font-size: 18px;
+        padding: 15px;
+        background: mediumpurple;
+        border: 1px solid lightgrey;
+        border-radius: 5px;
+        z-index: 5;
+        text-align: center;
+        position: absolute;
+        left: calc(50% - 130px);
+        top: calc(50% - 75px);
+    }
+}
+
+
+@media (min-width: 321px) and (max-width:768px) {
+
+
+    .LogIn {
+
+        background: rgba(226,226,226,1);
+        background: -moz-linear-gradient(45deg, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+        background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(226,226,226,1)), color-stop(50%, rgba(219,219,219,1)), color-stop(51%, rgba(209,209,209,1)), color-stop(100%, rgba(254,254,254,1)));
+        background: -webkit-linear-gradient(45deg, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+        background: -o-linear-gradient(45deg, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+        background: -ms-linear-gradient(45deg, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+        border: 2px solid grey;
+        border-radius: 10px;
+        width: 350px;
+        font-size: 12px;
+        display: flex;
+        position: absolute;
+        top: 100px;
+        left: calc( 50% - 175px);
+        text-align: center;
+        padding: 0 10px;
+        height: 250px;
+        align-items: center;
+        z-index: 5;
+
+        .closeBox {
+            cursor: pointer;
+            position: absolute;
+            font-size: 20px;
+            right: -10px;
+            top: 5px;
+            width: 50px;
+            padding: 0;
+            margin: 0;
+        }
+
+    }
+
+    .LogIn input {
+
+        width: 100%;
+        height: 10px;
+        padding: 20px;
+        font-size: 18px;
+
+
+    }
+
+    .LogIn h2 {
+        margin-bottom: 10px;
+        margin-top: 20px;
+    }
+
+
+
+
+
+    .LogIn button {
+        margin-top: 5px;
+        width: 100%;
+        height: 50px;
+        font-size: 12px;
+        border-radius: 5px;
+    }
+
+    .LogIn span {
+        margin-top: 5px;
+        width: 100%;
+        height: 50px;
+        font-size: 12px;
+        border-radius: 5px;
+    }
+
+
+
+    .SignUp {
+
+        background: rgba(226,226,226,1);
+        background: -moz-linear-gradient(45deg, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+        background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(226,226,226,1)), color-stop(50%, rgba(219,219,219,1)), color-stop(51%, rgba(209,209,209,1)), color-stop(100%, rgba(254,254,254,1)));
+        background: -webkit-linear-gradient(45deg, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+        background: -o-linear-gradient(45deg, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+        background: -ms-linear-gradient(45deg, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+        border: 2px solid grey;
+        border-radius: 10px;
+        width: 350px;
+        font-size: 12px;
+        display: flex;
+        position: absolute;
+        top: 100px;
+        left: calc( 50% - 175px);
+        text-align: center;
+        padding: 20px;
+        height: 370px;
+        align-items: center;
+        z-index: 5;
+
+        .closeBox {
+            cursor: pointer;
+            position: absolute;
+            font-size: 20px;
+            right: -10px;
+            top: 5px;
+            width: 50px;
+            padding: 0;
+            margin: 0;
+        }
+
+    }
+
+    .SignUp  input {
+        width: 100%;
+        height: 10px;
+        padding: 20px;
+        font-size: 20px;
+    }
+
+    .SignUp h2 {
+        font-size: 20px;
+    }
+
+
+
+    .SignUp button {
+        margin-top: 20px;
+        width: 100%;
+        height: 50px;
+        font-size: 12px;
+        border-radius: 5px;
+    }
+
+    .SignUp span {
+        margin-top: 20px;
+        width: 100%;
+        height: 50px;
+        font-size: 16px;
+        border-radius: 5px;
+    }
+
+
+    .myAccount {
+
+        background: rgba(226,226,226,1);
+        background: -moz-linear-gradient(45deg, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+        background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(226,226,226,1)), color-stop(50%, rgba(219,219,219,1)), color-stop(51%, rgba(209,209,209,1)), color-stop(100%, rgba(254,254,254,1)));
+        background: -webkit-linear-gradient(45deg, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+        background: -o-linear-gradient(45deg, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+        background: -ms-linear-gradient(45deg, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+        border: 4px solid whitesmoke;
+        border-radius: 10px;
+        width: 205px;
+        right: 0;
+        display: flex;
+        position: absolute;
+        top: -10px;
+        text-align: center;
+        padding: 20px;
+        height: 290px;
+        z-index: 5;
+    }
+
+
+    .myAccount button {
+        width: 170px;
+    }
+
+    .myAccountButtons {
+        display: grid;
+        justify-content: center;
+    }
+
+    .userStatsBox {
+        color: black;
+        position: absolute;
+        margin: 0;
+        top: -8px;
+        width: 450px;
+        height: 454px;
+        right: -3px;
+        overflow-y: scroll;
+    }
+
+    .closeSummary {
+        position: relative
+    }
+
+    .closeSummary img {
+        position: absolute;
+        right: 20px;
+        top: 25px;
+        width: 35px;
+        height: 35px;
+    }
+
+
+}
+
+
+
+
+// Header
+
+
+@media (max-width: 320px) {
+    //.header_bottom {
+    //    display: none;
+    //}
+}
+
+@media (max-width:768px) {
+    .header_top {
+        width: 100%;
+        display: none;
+    }
+
+    .header_mobile {
+        width: 100%;
+        display: flex;
+        background: #363636;
+        height: auto;
+        color: map-get($colors, white);
+        padding: 5px;
+    }
+
+    .bar {
+        width: 35px;
+        height: 5px;
+        background-color: black;
+        margin: 6px;
+    }
+
+    .mobile_bar {
+
+        margin: 0 64px 0 0;
+        > img {
+            width:40px;
+            height:40px;
+        }
+    }
+
+    .mobile_logo {
+        font-size:30px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+    }
+
+    .mobile_burger {
+        font-size: 20px;
+        position: absolute;
+        top: 64px;
+        right: 10px;
+
+        background: rgba(226,226,226,1);
+        background: -moz-linear-gradient(45deg, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+        background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(226,226,226,1)), color-stop(50%, rgba(219,219,219,1)), color-stop(51%, rgba(209,209,209,1)), color-stop(100%, rgba(254,254,254,1)));
+        background: -webkit-linear-gradient(45deg, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+        background: -o-linear-gradient(45deg, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+        background: -ms-linear-gradient(45deg, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+        width: 150px;
+        height: 275px;
+        padding-top: 20px;
+        padding-left: 10px;
+        border-radius: 10px;
+        color: black;
+        text-align: left;
+
+        > li {
+            padding: 5px;
+        }
+
+
+    }
+
+
+
+
+}
+
+
+
+// Body
+
+.tooltip {
+    right: 20px;
+}
+
+.tooltip h1 {
+    text-align: center;
+}
+
+@media (max-width: 479px) {
+    .music_choice {
+        text-align: left;
+        padding-left: 10px;
+
+    }
+
+    .tooltip {
+        position: absolute;
+        width: 205px;
+        top: 121px;
+        text-align: left;
+        padding-left: 10px;
+
+    }
+}
+
+
+
+@media (min-width: 480px) and (max-width: 540px) {
+    .music_choice {
+        text-align: left;
+        padding-left: 10px;
+
+    }
+
+    .tooltip {
+
+        width: 285px;
+    }
+
+}
+
+@media (min-width: 541px) and (max-width: 639px) {
+    .music_choice {
+        text-align: left;
+        padding-left: 10px;
+
+    }
+
+    .tooltip {
+
+        width: 320px;
+
+    }
+}
+
+@media (min-width:1049px) {
+    .tooltip {
+        right: -100px;
+        width: 350px;
+
+    }
+}
+
+
+
+
+
+// Timer
+
+
+@media (min-width:641px) and(max-width:768px) {
+
+    .minString {
+        padding: 0;
+        font-size: 40px;
+        margin-top: 0;
+        position: relative;
+
+    }
+
+
+}
+
+
+
+
+
+// PopUp
+
+@media (max-width:768px) {
+
+    .showUserNotLoggedIn {
+        background: rebeccapurple;
+        color: #F2F2FC;
+        width: 350px;
+        height: 150px;
+        font-size: 20px;
+        border: 1px solid grey;
+        border-radius: 2%;
+        z-index: 2;
+        padding: 20px;
+        position: fixed;
+        left: calc(50% - 200px);
+        top: calc(50% - 150px);
+    }
+}
+
+
+
+
+
+
+// Footer
+
+
+@media (max-width: 640px) {
+    .footer_right {
+        flex-wrap: wrap;
+    }
+
+    .footer_drop {
+        width: 33%;
+        margin: 10px;
+    }
+
+}
+
+
+
+@media (min-width: 641px) and (max-width:768px) {
+
+    .footer_icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .footer_left {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .footer_right {
+        padding: 10px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+    }
+
+
+    .footer_right li, .footer_right ul {
+        width: 100%;
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+    }
+
+    .footer_right h4 {
+        padding: 2px
+    }
+
+    footer {
+        width: 100%;
+        height: auto;
+        font-size: 14px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .footer_drop {
+        padding: 10px;
+        width: auto;
+    }
+
+}
