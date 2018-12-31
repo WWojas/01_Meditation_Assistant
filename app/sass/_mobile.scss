@@ -149,7 +149,45 @@
         left: calc(50% - 130px);
         top: calc(50% - 75px);
     }
+
+
+
+    .myAccount {
+        width: 100%;
+        position: relative;
+        top: 0;
+        right: 0;
+        border: 0;
+        border-radius: 0;
+
+
+        button {
+            width: 100%;
+        }
+    }
+
+
+
+    .userStatsBox {
+        height: auto;
+
+        p {
+
+            display: none;
+        }
+    }
+
+    .closeSummary img {
+        top: 5px;
+    }
 }
+
+@media (min-width:321px) and (max-width: 720px) {
+    .myAccount {
+        top: 50px;
+    }
+}
+
 
 
 @media (min-width: 321px) and (max-width:768px) {
@@ -306,7 +344,6 @@
         right: 0;
         display: flex;
         position: absolute;
-        top: -10px;
         text-align: center;
         padding: 20px;
         height: 290px;
@@ -325,13 +362,12 @@
 
     .userStatsBox {
         color: black;
-        position: absolute;
+        position: relative;
         margin: 0;
-        top: -8px;
-        width: 450px;
+        width: 100vw;
         height: 454px;
-        right: -3px;
         overflow-y: scroll;
+        text-align: center;
     }
 
     .closeSummary {

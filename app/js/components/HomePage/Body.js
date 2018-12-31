@@ -533,6 +533,7 @@ class Body extends React.Component {
                 },
                 body: JSON.stringify({
                     'date': moment().format('LLLL'),
+                    'date_mobile': moment().format("MMM Do YY"),
 
                     'duration': this.state.current_time,
 

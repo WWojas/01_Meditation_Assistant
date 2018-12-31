@@ -5,6 +5,8 @@ class Header extends React.Component {
         super(props);
         this.state = {
 
+            screenWidth: window.innerWidth,
+
             //showing/hiding menus
             toggleDisplayLogIn: 'none',
             toggleDisplaySignUp: 'none',
@@ -197,6 +199,7 @@ class Header extends React.Component {
                     toggleDisplayLogIn: 'none',
                     toggleDisplaySignUp: 'none',
 
+
                     displaySignUpNav: 'none',
 
                     showMyAccount: 'block',
@@ -229,6 +232,7 @@ class Header extends React.Component {
 
             this.setState({
                 showAccountOptions: 'block',
+                displayMobileMenu: 'none'
 
             })
         } else if (this.state.showAccountOptions === 'block') {
@@ -263,7 +267,10 @@ class Header extends React.Component {
     showStatistics = () => {
 
         this.setState({
-            userStatsDisplay: 'block'
+            userStatsDisplay: 'block',
+            showAccountOptions: 'none',
+            displayMobileMenu: 'none'
+
         }, () => {
 
 
@@ -323,7 +330,9 @@ class Header extends React.Component {
                 </ul>
 
             </div>
+
         )
+
     }
 
 
@@ -333,6 +342,7 @@ class Header extends React.Component {
         if (this.state.isUserLoggedIn === true) {
             return (
 
+                <div>
                 <li  style={{ display: this.state.showMyAccount }}>
                     <span onClick={this.openAccountOptions} >  My Account </span>
 
@@ -345,41 +355,6 @@ class Header extends React.Component {
                         <button onClick={this.showStatistics}> My Statistics </button>
 
 
-                        <div className="userStatsBox" style={{ display: this.state.userStatsDisplay }} id="scrollbarStyle" >
-
-                            <div className="closeSummary" onClick={this.closeSummary}><img src='/app/images/close_box.png' /> </div>
-
-                            <table className="stats_table">
-                                <thead>
-                                <tr>
-                                    <h2> {this.state.response[0].username} </h2>
-                                    <h2> Session Summary </h2>
-                                    <p><em> "The secret of getting ahead is getting started" -
-                                        <strong>Mark Twain</strong></em></p>
-
-                                </tr>
-                                </thead>
-
-                                <tbody>
-
-                                {
-                                    this.state.sessions.map((element) => {
-
-                                        return <tr>
-                                            <td>
-                                                {element.date}
-                                            </td>
-                                            <td>
-                                                {element.duration} min
-                                            </td>
-                                        </tr>
-                                    })
-                                }
-                                </tbody>
-                            </table>
-                        </div>
-
-
                         <button> My Groups </button>
                         <button> Publish </button>
                         <button onClick={this.userLogOut}> Log Out </button>
@@ -388,8 +363,58 @@ class Header extends React.Component {
                     </div>
                 </li>
 
+                </div>
+
+
+
             )
         }
+    }
+
+    generateMyStatsBoxDesktop () {
+
+        if (this.state.isUserLoggedIn === true) {
+            return (
+
+                <div className="userStatsBox" style={{display: this.state.userStatsDisplay}} id="scrollbarStyle">
+
+                    <div className="closeSummary" onClick={this.closeSummary}><img src='/app/images/close_box.png'/>
+                    </div>
+
+                    <table className="stats_table">
+                        <thead>
+                        <tr>
+                            <h2> {this.state.response[0].username} </h2>
+                            <h2> Session Summary </h2>
+                            <p><em> "The secret of getting ahead is getting started" -
+                                <strong>Mark Twain</strong></em></p>
+
+                        </tr>
+                        </thead>
+
+                        <tbody>
+
+                        {
+                            this.state.sessions.map((element) => {
+
+                                return <tr>
+                                    <td>
+                                        {element.date}
+                                    </td>
+                                    <td>
+                                        {element.duration} min
+                                    </td>
+                                </tr>
+                            })
+                        }
+                        </tbody>
+                    </table>
+                </div>
+
+
+            )
+        }
+
     }
 
     // Close Summary Box
@@ -597,6 +622,27 @@ class Header extends React.Component {
         )
     }
 
+    generateMyStatsMobile () {
+        if (this.state.isUserLoggedIn === true) {
+            return (
+                <div className="myAccount" style={{display: this.state.showAccountOptions}}>
+
+                    <p> Welcome, {this.state.response[0].username} </p>
+
+
+                    <div className="myAccountButtons">
+
+                        <button onClick={this.showStatistics}> My Statistics</button>
+
+                        <button> My Groups</button>
+                        <button> Publish</button>
+                        <button onClick={this.userLogOut}> Log Out</button>
+                    </div>
+                </div>
+            )
+        }
+    }
+
 
 
     // Mobile Menu
@@ -691,60 +737,60 @@ class Header extends React.Component {
             return <li style={{display: this.state.showMyAccount}}>
                 <span onClick={this.openAccountOptions}>  My Account </span>
 
-                <div className="myAccount" style={{display: this.state.showAccountOptions}}>
 
-                    <p> Welcome, {this.state.response[0].username} </p>
-
-                    <div className="myAccountButtons">
-
-                    <button onClick={this.showStatistics}> My Statistics</button>
-
-
-                    <div className="userStatsBox" style={{display: this.state.userStatsDisplay}}>
-
-                        <div className="closeSummary" onClick={this.closeSummary}><img src='/01_Meditation_Assistant/app/images/close_box.png' /> </div>
-                        <table className="stats_table">
-                            <thead>
-                            <tr>
-                                <h1> {this.state.response[0].username} </h1>
-                                <h2> Session Summary </h2>
-                                <p><em> "The secret of getting ahead is getting started" -
-                                    <strong>Mark Twain</strong></em></p>
-
-                            </tr>
-                            </thead>
-
-                            <tbody>
-
-                            {
-                                this.state.sessions.map((element) => {
-
-                                    return <tr>
-                                        <td>
-                                            {element.date}
-                                        </td>
-                                        <td>
-                                            {element.duration} min
-                                        </td>
-                                    </tr>
-                                })
-                            }
-                            </tbody>
-                        </table>
-                    </div>
-
-
-                    <button> My Groups</button>
-                    <button> Publish</button>
-                    <button onClick={this.userLogOut}> Log Out</button>
-                    </div>
-                </div>
             </li>
 
         }
 
     }
 
+    generateMyStatsBoxMobile () {
+
+        if (this.state.isUserLoggedIn === true) {
+            return (
+
+                <div className="userStatsBox" style={{display: this.state.userStatsDisplay}} id="scrollbarStyle">
+
+                    <div className="closeSummary" onClick={this.closeSummary}><img src='/app/images/close_box.png'/>
+                    </div>
+
+                    <table className="stats_table">
+                        <thead>
+                        <tr>
+                            <h2> {this.state.response[0].username} </h2>
+                            <h2> Session Summary </h2>
+                            <p><em> "The secret of getting ahead is getting started" -
+                                <strong>Mark Twain</strong></em></p>
+
+                        </tr>
+                        </thead>
+
+                        <tbody>
+
+                        {
+                            this.state.sessions.map((element) => {
+
+                                return <tr>
+                                    <td>
+
+                                        {element.date_mobile}
+
+                                    </td>
+                                    <td>
+                                        {element.duration} min
+                                    </td>
+                                </tr>
+                            })
+                        }
+                        </tbody>
+                    </table>
+                </div>
+
+
+            )
+        }
+
+    }
 
 
 
@@ -764,8 +810,16 @@ class Header extends React.Component {
                     {/* MOBILE Section */}
                     { this.generateMobileHeader () }
 
+                    { window.matchMedia("(max-width: 320px)").matches && this.generateMyStatsBoxMobile ()}
+
+
                     {/* DESKTOP Section*/}
                     { this.generateDesktopHeader () }
+
+                    { window.matchMedia("(max-width: 720px)").matches && this.generateMyStatsMobile() }
+
+                    { window.matchMedia("(min-width: 321px)").matches && this.generateMyStatsBoxDesktop () }
+
 
 
                     {/* Bottom part of Header */}
