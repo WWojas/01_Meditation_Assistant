@@ -66,6 +66,7 @@ class Body extends React.Component {
 
 
     addMinutes = () => {
+
         if (this.state.current_time > 3600) {
 
             this.setState({
@@ -112,57 +113,13 @@ class Body extends React.Component {
         }
     };
 
-                                                // USER TIMER
 
-    userTimeError() {
-
-        if ( this.state.userTimerError === true) {
-
-         return  <div className="userTimerError">
-                <p> Only time within the <strong> range of 1-60 </strong> is allowed</p>
-            </div>
-        }
-
-    }
-
-    // SETTING MINUTES USING KEYBOARD
-    setUserTimer = (event) => {
-
-        if (event.target.value < 1) {
-
-            this.setState({
-                current_time: 1,
-                userTimerError: true
-
-            })
-        } else if (Number.isNaN(Number(event.target.value))) {
-            this.setState({
-                userTimerError: true,
-                current_time: ''
-            })
-        }
-
-        else if (event.target.value >= 58) {
-
-            this.setState({
-                current_time: 60,
-                userTimerError: true,
-
-            })
-
-        } else {
-            this.setState({
-                current_time: event.target.value,
-                userTimerError: false
-
-            })
-        }
-    };
 
 
                                                         // TIMER BUTTONS
     // SHOW START BUTTON
     showStartButton() {
+
         if (this.state.timerStarted === false) {
 
             return <div className="timer_box">
@@ -218,6 +175,23 @@ class Body extends React.Component {
 
                                                 // TIMER SETUP
 
+
+
+    timerSetup () {
+    return (
+    <div class="timer_middle">
+        <input style={{ display: this.state.starterDisplay}} value= {this.convertSecondsToTimer(this.state.current_time)} onChange={ this.setUserTimer} type='text'/>
+        <div class="min">
+            <span className="minString" style={{ display: this.state.showMinString}}> min </span>
+        </div>
+
+        <h2 style={{ display: this.state.counterDisplay}}> { this.convertSecondsToTimer(this.state.current_time)} </h2>
+    </div>
+    )
+    }
+
+
+
     convertSecondsToTimer = (sec) => {
         const minutes = Math.floor( sec / 60 );
         const seconds = sec - (minutes * 60);
@@ -229,19 +203,75 @@ class Body extends React.Component {
     };
 
 
+    // USER TIMER
 
-    timerSetup () {
-    return (
-    <div class="timer_middle">
-        <input style={{ display: this.state.starterDisplay}} value= {this.convertSecondsToTimer(this.state.current_time)} onChange={this.setUserTimer} type='text'/>
-        <div class="min">
-            <span className="minString" style={{ display: this.state.showMinString} }> min </span>
-        </div>
+    setUserTimer = (event) => {
 
-        <h2 style={{ display: this.state.counterDisplay}}> { this.convertSecondsToTimer(this.state.current_time)} </h2>
-    </div>
-    )
+        // console.log(typeof event.target.value);
+        // console.log(event.target.value.slice(0, 2));
+        // console.log(event.target.value.slice(3, 6));
+
+        var convertedValue = parseInt(event.target.value.slice(0,2), 10);
+
+        console.log('convertedVal: '+ convertedValue);
+        console.log(typeof convertedValue);
+        console.log('current time: ' + this.state.current_time)
+
+
+        if (convertedValue < 0) {
+            this.setState({
+                current_time: 60,
+                // userTimerError: true
+
+            })
+
+        // } else if (Number.isNaN(Number(event.target.value))) {
+        //     this.setState({
+        //         userTimerError: true,
+        //         current_time: ''
+        //     })
+        }
+
+        else if (convertedValue >= 60) {
+
+            this.setState({
+                current_time: 3600,
+                // userTimerError: true,
+
+            })
+
+        } else {
+
+        this.setState({
+            current_time: convertedValue,
+            userTimerError: false
+
+        })
+
     }
+
+
+    };
+
+    userTimeError() {
+
+        if ( this.state.userTimerError === true) {
+
+            return  <div className="userTimerError" onMouseMove={ this.hidePopUp} >
+                <p> Only time within the <strong> range of 1-60 </strong> is allowed</p>
+            </div>
+
+        }
+
+    }
+
+    hidePopUp() {
+        setTimeout('${".userTimerError"}.hide()', 2000);
+    }
+
+
+
+
 
 
 

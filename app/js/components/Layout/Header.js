@@ -57,6 +57,9 @@ class Header extends React.Component {
     signUp = () => {
         if (this.state.toggleDisplaySignUp === 'none') {
             this.setState({
+                password: '',
+                username: '',
+                email: '',
                 toggleDisplaySignUp: 'block',
                 toggleDisplayLogIn: 'none',
                 displayMobileMenu: 'none'
@@ -150,6 +153,9 @@ class Header extends React.Component {
     logIn = () => {
         if (this.state.toggleDisplayLogIn === 'none') {
             this.setState({
+                password: '',
+                username: '',
+                email: '',
                 toggleDisplayLogIn: 'block',
                 toggleDisplaySignUp: 'none',
                 showMyAccount: 'none',
